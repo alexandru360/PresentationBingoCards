@@ -1,2 +1,3 @@
 # PresentationBingoCards
-Bingo cards for presentation :)
+Bingo cards for meetings :)
+

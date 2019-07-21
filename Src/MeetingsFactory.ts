@@ -1,4 +1,8 @@
-class MeetingsFactory{
+import Meeting from './Meeting';
+import Participant from './Participant';
+import Guid from './Guid';
+
+export default class MeetingsFactory{
     public CreateMeeting(userName:string, meetingName: string): Meeting{        
         let p = new Participant();
         p.Id = Guid.newGuid();
@@ -8,6 +12,6 @@ class MeetingsFactory{
         m.Id = Guid.newGuid();
         m.Name = meetingName;
         m.Participants.push(p);
-        return new Meeting();
+        return m;
     }
 }

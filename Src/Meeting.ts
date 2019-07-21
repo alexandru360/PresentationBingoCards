@@ -1,4 +1,5 @@
-class Meeting{
+import Participant from './Participant';
+export default class Meeting{
     constructor(){
         this.Participants = [];        
     }

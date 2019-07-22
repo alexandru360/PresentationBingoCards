@@ -8,6 +8,7 @@ describe('Meetings creation', () => {
         expect(m1.Name).toBe("first meeting");
         expect(m1.Participants.length).toBe(1);
         expect(m1.Participants[0].Name).toBe("andrei");
+        expect(m1.AllUnchecked()).toBe(true);
         
         
   
@@ -18,6 +19,7 @@ describe('Meetings creation', () => {
       const m2=mf.CreateMeeting("andrei","first meeting");
       
       expect(m1.Id).not.toBe(m2.Id);
+      
 
     })
   })

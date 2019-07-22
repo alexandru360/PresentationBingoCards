@@ -10,8 +10,10 @@ export default class MeetingsFactory{
 
         let m = new Meeting();
         m.Id = Guid.newGuid();
+        
         m.Name = meetingName;
         m.Participants.push(p);
+        
         return m;
     }
 }

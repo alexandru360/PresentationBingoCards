@@ -12,7 +12,7 @@ export default class MeetingsFactory{
         m.Id = Guid.newGuid();
         
         m.Name = meetingName;
-        m.Participants.push(p);
+        m.AddParticipant(p);
         
         return m;
     }

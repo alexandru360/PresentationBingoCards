@@ -9,6 +9,10 @@ export default class Cards{
     Description: string;
     checkedByUser: Array<Participant>;
 
+    protected internal CheckMe( p:Participant ){
+        //TODO: maybe verify is not double push
+        checkedByUser.push(p);
+    }
     public IsChecked(): boolean{
         
         return this.checkedByUser.length > 0;

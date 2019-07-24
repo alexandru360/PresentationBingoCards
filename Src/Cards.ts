@@ -22,6 +22,22 @@ export default class Cards{
         
         return this.checkedByUser.filter(it=>it.Id === p.Id).length > 0;
     }
+     public static DefaultCards(): Array<Cards>   {
 
+        let i=1;
+        const ret=[];
+        
+        let c=new Cards();
+        c.Name="Who just joined?";
+        c.Id = i++;
+        ret.push(c);
+
+        c=new Cards();
+        c.Name="Can you email that to everyone ?";
+        c.Id = i++;
+        ret.push(c);
+
+        return ret;
+    }
     
 }

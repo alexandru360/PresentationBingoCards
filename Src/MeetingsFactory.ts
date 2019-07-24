@@ -11,28 +11,12 @@ export default class MeetingsFactory{
 
         let m = new Meeting();
         m.Id = Guid.newGuid();
-        m.Cards=  this.DefaultCards();
+        m.Cards=  Cards.DefaultCards();
         m.Name = meetingName;
         m.AddParticipant(p);
         
         return m;
     }
 
-      DefaultCards(): Array<Cards>   {
 
-        let i=1;
-        const ret=[];
-        
-        let c=new Cards();
-        c.Name="Who just joined?";
-        c.Id = i++;
-        ret.push(c);
-
-        c=new Cards();
-        c.Name="Can you email that to everyone ?";
-        c.Id = i++;
-        ret.push(c);
-
-        return ret;
-    }
 }

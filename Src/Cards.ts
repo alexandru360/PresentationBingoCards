@@ -9,9 +9,10 @@ export default class Cards{
     Description: string;
     checkedByUser: Array<Participant>;
 
-    protected internal CheckMe( p:Participant ){
+    public CheckMe( p:Participant ):number {
         //TODO: maybe verify is not double push
-        checkedByUser.push(p);
+        this.checkedByUser.push(p);
+        return this.checkedByUser.length;
     }
     public IsChecked(): boolean{
         
@@ -22,20 +23,5 @@ export default class Cards{
         return this.checkedByUser.filter(it=>it.Id === p.Id).length > 0;
     }
 
-    public static Array<Cards>  DefaultCards(){
-
-        let i=1;
-        const ret=[];
-        let c=new Cards();
-        c.Name="Who just joined?";
-        c.Id = i++;
-        ret.push(c);
-
-        c=new Cards();
-        c.Name="Can you email that to everyone ?";
-        c.Id = i++;
-        ret.push(c);
-
-        return ret;
-    }
+    
 }

@@ -8,7 +8,7 @@ export default class Meeting{
 
     Id: any;
     Name: string;
-    private Participants: Array<Participant>;
+    Participants: Array<Participant>;
     EndTime: Date;
     EndVisibleRezsults: Date;
     Cards: Array<Cards>;
@@ -18,7 +18,9 @@ export default class Meeting{
     public AllUnchecked(): boolean{
         return (this.Cards.filter(it=>it.IsChecked()).length === 0);
     }
-
+    public IsCardCheckedByParticipant(c:Cards,p: Participant ): boolean{
+        return c.IsCheckedByUser(p);
+    }
     public CheckCard(c: Cards , p:Participant){
         //TODO: verify participant is added first or add
         //TODO: verify card is added first

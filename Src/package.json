@@ -6,7 +6,6 @@
   "scripts": {
     "compile": "tsc",
     "test": "jest"
-
   },
   "author": "",
   "license": "ISC",

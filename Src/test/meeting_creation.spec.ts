@@ -10,12 +10,17 @@ describe('Meetings creation', () => {
         expect(m1.Name).toBe("first meeting");
         expect(m1.Participants.length).toBe(1);
         expect(m1.Participants[0].Name).toBe("andrei");
-        expect(m1.AllUnchecked()).toBe(true);
+        let res=m1.AllUnchecked();
+        expect(res.isOk()).toBe(true);
+        let result= false;
+        res.map(t=> result =t);
+        expect(result).toBe(true);
+        
         expect(m1.TotalNumberOfCards()).toBe(Cards.DefaultCards().length);
         const p=new Participant();
         p.Id=70;
         p.Name ="alexandru";
-        const res= m1.AddParticipant(p);
+        const partNumber= m1.AddParticipant(p);
         expect(res.isOk()).toBe(true);
         
   

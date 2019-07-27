@@ -1,5 +1,6 @@
 import Participant from './Participant';
 import Cards from './Cards';
+import { ok, err, Result } from 'neverthrow';
 export default class Meeting{
 
     constructor(){
@@ -15,8 +16,13 @@ export default class Meeting{
     EndTime: Date;
     EndVisibleRezsults: Date;
     Cards: Array<Cards>;
-    public AddParticipant(p:Participant ){
+    public AddParticipant(p:Participant ): Result<number,Error>{
+        if(this.IsObsolete()){
+            return err(new Error(`cannot add participant to the obsolete meeting ${this.Id}`));
+        }
+
         this.Participants.push(p);
+        return ok(this.Participants.length);
     }
     public AllUnchecked(): boolean{
         return (this.TotalNumberOfCardsChecked() === 0);
@@ -24,10 +30,14 @@ export default class Meeting{
     public IsCardCheckedByParticipant(c:Cards,p: Participant ): boolean{
         return c.IsCheckedByUser(p);
     }
-    public CheckCardByParticipant(c: Cards , p:Participant){
+    public CheckCardByParticipant(c: Cards , p:Participant): Result<Meeting,Error>{
         //TODO: verify participant is added first or add
         //TODO: verify card is added first
+        if(this.IsObsolete()){
+            return err(new Error(`cannot check card to the obsolete meeting ${this.Id}`));
+        }
         c.CheckMe(p);
+        return ok(this);
     }
     public TotalNumberOfCardsChecked():number{
         return this.Cards.filter(it=>it.IsChecked()).length ;

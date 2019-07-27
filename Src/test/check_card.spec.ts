@@ -7,7 +7,8 @@ describe('Check  card basic', () => {
         console.log(m1.Cards.length);
         
         expect(m1.AllUnchecked()).toBe(true);
-        m1.CheckCardByParticipant(m1.Cards[0], m1.Participants[0]);    
+        const res= m1.CheckCardByParticipant(m1.Cards[0], m1.Participants[0]);
+        expect(res.isOk()).toBe(true);    
         expect(m1.AllUnchecked()).toBe(false);
         expect(m1.IsCardCheckedByParticipant(m1.Cards[0], m1.Participants[0])).toBe(true);
         
@@ -20,7 +21,8 @@ describe('Check  card basic', () => {
         console.log(m1.Cards.length);
         
         expect(m1.TotalNumberOfCardsChecked()).toBe(0);
-        m1.CheckCardByParticipant(m1.Cards[0], m1.Participants[0]);    
+        const res= m1.CheckCardByParticipant(m1.Cards[0], m1.Participants[0]);    
+        expect(res.isOk()).toBe(true);
         expect(m1.TotalNumberOfCardsChecked()).toBe(1);
         
         

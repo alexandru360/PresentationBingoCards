@@ -36,8 +36,12 @@ export default class Meeting{
     }
 
     public IsObsolete(): boolean{
+        return (this.PassedTimeFromStart() >35 * 60 * 1000); //35 minutes
+    }
+    public PassedTimeFromStart():number{
         let dtNow =  Date.now();
-        return (dtNow - this.startedMeeting >35 * 60 * 1000); //35 minutes
+        console.log(dtNow);
+        return (dtNow - this.startedMeeting );
     }
 
 

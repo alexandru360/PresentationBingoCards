@@ -8,7 +8,8 @@ export default class Meeting{
         this.Cards = [];
         this.startedMeeting = Date.now();
     }
-    public static  MaxTime=35 * 60 * 1000;
+    public static  MaxTimeToObsolete=35 * 60 * 1000;
+    public static MaxTimeToSeeResult = 65 * 60 * 1000;
     startedMeeting: number;
     Id: any;
     Name: string;
@@ -24,8 +25,15 @@ export default class Meeting{
         this.Participants.push(p);
         return ok(this.Participants.length);
     }
-    public AllUnchecked(): boolean{
-        return (this.TotalNumberOfCardsChecked() === 0);
+    public AllUnchecked(): Result< boolean, Error>{
+        var res=this.TotalNumberOfCardsChecked();
+        
+        return res.andThen(it=> ok(it===0));
+        // const ret= res.match(
+        //     (v)=>{return ok(v==0)},
+        //     (error)=>{ return error}
+        // );
+        // return ret;
     }
     public IsCardCheckedByParticipant(c:Cards,p: Participant ): boolean{
         return c.IsCheckedByUser(p);
@@ -39,15 +47,24 @@ export default class Meeting{
         c.CheckMe(p);
         return ok(this);
     }
-    public TotalNumberOfCardsChecked():number{
-        return this.Cards.filter(it=>it.IsChecked()).length ;
+    public TotalNumberOfCardsChecked():Result<number, Error>{
+        if(this.CanSeeScore()){
+            return ok(this.Cards.filter(it=>it.IsChecked()).length );
+        }
+        else{
+            return err(new Error(`cannot see score for ${this.Id}`));
+        }
     }
     public TotalNumberOfCards():number{
         return this.Cards.length;
     }
-
+    
     public IsObsolete(): boolean{
-        return (this.PassedTimeFromStart() > Meeting.MaxTime); //35 minutes
+        return (this.PassedTimeFromStart() > Meeting.MaxTimeToObsolete); //35 minutes
+    }
+    public CanSeeScore(): boolean{
+        return (this.PassedTimeFromStart() > Meeting.MaxTimeToSeeResult); //65 minutes
+    
     }
     public PassedTimeFromStart():number{
         let dtNow =  Date.now();

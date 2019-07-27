@@ -20,7 +20,7 @@ describe('Meeting Obsolete', () => {
         const spy = jest.spyOn(Date,'now');
         spy.mockImplementation(()=>{
           console.log('calling DateTime Now');
-          return now + 36 * 60* 1000;
+          return now + Meeting.MaxTimeToObsolete + 1000;
         } );
         expect(m1.IsObsolete()).toBe(true);
         //spy.mockClear();        
@@ -37,7 +37,7 @@ describe('Meeting Obsolete', () => {
         const spy = jest.spyOn(Date,'now');
         spy.mockImplementation(()=>{
           console.log('calling DateTime Now');
-          return now + 36 * 60* 1000;
+          return now + Meeting.MaxTimeToObsolete + 1000;
         } );
         expect(m1.IsObsolete()).toBe(true);
         const p=new Participant();

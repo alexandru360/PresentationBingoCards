@@ -16,7 +16,7 @@ export default class Meeting{
         this.Participants.push(p);
     }
     public AllUnchecked(): boolean{
-        return (this.Cards.filter(it=>it.IsChecked()).length === 0);
+        return (this.TotalNumberOfCardsChecked() === 0);
     }
     public IsCardCheckedByParticipant(c:Cards,p: Participant ): boolean{
         return c.IsCheckedByUser(p);

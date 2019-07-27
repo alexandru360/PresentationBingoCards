@@ -1,11 +1,13 @@
 import Participant from './Participant';
 import Cards from './Cards';
 export default class Meeting{
+
     constructor(){
         this.Participants = [];        
         this.Cards = [];
+        this.startedMeeting = Date.now();
     }
-
+    startedMeeting: number;
     Id: any;
     Name: string;
     Participants: Array<Participant>;
@@ -31,6 +33,11 @@ export default class Meeting{
     }
     public TotalNumberOfCards():number{
         return this.Cards.length;
+    }
+
+    public IsObsolete(): boolean{
+        let dtNow =  Date.now();
+        return (dtNow - this.startedMeeting >35 * 60 * 1000); //35 minutes
     }
 
 

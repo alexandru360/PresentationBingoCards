@@ -5,4 +5,8 @@ export class AppService {
   root(): string {
     return 'Hello World!';
   }
+
+  ala(): string {
+    return 'bala';
+  }
 }

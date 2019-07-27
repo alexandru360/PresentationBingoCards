@@ -1,5 +1,6 @@
 import  MeetingsFactory from '../MeetingsFactory';
 import Meeting from '../meeting';
+import Cards from '../Cards';
 describe('Meetings creation', () => {
     it('a meeting should have been created properly', () => {
         const mf=new MeetingsFactory();
@@ -9,7 +10,7 @@ describe('Meetings creation', () => {
         expect(m1.Participants.length).toBe(1);
         expect(m1.Participants[0].Name).toBe("andrei");
         expect(m1.AllUnchecked()).toBe(true);
-        
+        expect(m1.TotalNumberOfCards()).toBe(Cards.DefaultCards().length);
         
   
       })

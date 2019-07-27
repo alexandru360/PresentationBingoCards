@@ -7,6 +7,7 @@ export default class Meeting{
         this.Cards = [];
         this.startedMeeting = Date.now();
     }
+    public static  MaxTime=35 * 60 * 1000;
     startedMeeting: number;
     Id: any;
     Name: string;
@@ -36,7 +37,7 @@ export default class Meeting{
     }
 
     public IsObsolete(): boolean{
-        return (this.PassedTimeFromStart() >35 * 60 * 1000); //35 minutes
+        return (this.PassedTimeFromStart() > Meeting.MaxTime); //35 minutes
     }
     public PassedTimeFromStart():number{
         let dtNow =  Date.now();

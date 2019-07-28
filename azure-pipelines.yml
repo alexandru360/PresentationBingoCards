@@ -1,0 +1,36 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/vsts/pipelines/apps/windows/dot-net
+#https://docs.microsoft.com/en-us/azure/devops/pipelines/build/options?view=vsts&tabs=yaml
+
+variables:
+    year: $(Date:yyyy)
+    month: $(Date:MM)
+    day: $(Date:dd)
+    uk: $(Date:yyyyMMdd)
+    messagePush: $(Build.SourceVersionMessage)
+
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+jobs:
+
+
+- job: FullTestOnLinux
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+    - checkout: self #skip checking out the default repository resource
+      clean: true
+  
+    
+    - script: |
+
+        type dockerize/ci_test.bat
+        docker image ls
+        docker container ls
+        sleep 30
+    
+      displayName: test DDD
+    
+    

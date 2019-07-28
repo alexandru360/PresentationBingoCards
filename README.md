@@ -1,5 +1,10 @@
+[![Build Status](https://dev.azure.com/ignatandrei0674/BingoAzureDevOps/_apis/build/status/ignatandrei.PresentationBingoCards?branchName=master)](https://dev.azure.com/ignatandrei0674/BingoAzureDevOps/_build/latest?definitionId=4&branchName=master)
+![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/ignatandrei0674/BingoAzureDevOps/4)
+![Azure DevOps tests](https://img.shields.io/azure-devops/tests/ignatandrei0674/BingoAzureDevOps/4)
+
 # PresentationBingoCards
 Bingo cards for meetings :)
+
 
 ## What it does: 
 

@@ -25,12 +25,21 @@ jobs:
   
     
     - script: |
+        
+        cd dockerize
+        ls -l
+        chmod 777 ./ci_test.bat 
+        ./ci_test.bat
 
-        type dockerize/ci_test.bat
         docker image ls
         docker container ls
-        sleep 30
+        cp -r -v ./jest-stare  $(Build.ArtifactStagingDirectory)/jest-stare/ 
     
       displayName: test DDD
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+         artifactName: Tests
+      displayName: 'Publish Artifact: drop' 
     
     

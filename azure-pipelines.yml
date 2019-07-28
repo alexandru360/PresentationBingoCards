@@ -31,6 +31,7 @@ jobs:
         docker container ls
         cp -r -v ./jest-stare  $(Build.ArtifactStagingDirectory)/jest-stare/ 
         cp ./junit.xml  $(Build.ArtifactStagingDirectory)/junit.xml 
+        cp ./cobertura-coverage.xml $(Build.ArtifactStagingDirectory)/cobertura-coverage.xml 
       displayName: test DDD
     
     - task: PublishBuildArtifacts@1
@@ -42,6 +43,9 @@ jobs:
       inputs:
         testRunner: JUnit
         testResultsFiles: '$(Build.ArtifactStagingDirectory)/junit.xml'
-
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'cobertura'
+        summaryFileLocation: '$(Build.ArtifactStagingDirectory)/cobertura-coverage.xml'
     
     

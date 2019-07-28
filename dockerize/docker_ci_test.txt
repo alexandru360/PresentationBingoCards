@@ -2,5 +2,5 @@ FROM node:8
 WORKDIR /app
 COPY . ./
 RUN yarn
-RUN yarn test
+RUN yarn test --reporters default jest-stare
 CMD tail -f /dev/null

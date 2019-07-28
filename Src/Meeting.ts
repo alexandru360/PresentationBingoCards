@@ -28,13 +28,13 @@ export default class Meeting{
     public AllUnchecked(): Result< boolean, Error>{
         
         var res=this.TotalNumberOfCardsChecked();
-        console.log(" all unchecked" + res.isOk());
+        //console.log(" all unchecked" + res.isOk());
         return res.andThen(it=> ok(it===0));
         // const ret= res.match(
         //     (v)=>{return ok(v==0)},
         //     (error)=>{ return error}
         // );
-        // return ret;
+        
     }
     public IsCardCheckedByParticipant(c:Cards,p: Participant ): Result< boolean, Error>{
         if(this.CanSeeScore()){
@@ -76,7 +76,7 @@ export default class Meeting{
     }
     public PassedTimeFromStart():number{
         let dtNow =  Date.now();
-        console.log(dtNow);
+        //console.log(dtNow);
         return (dtNow - this.startedMeeting );
     }
 

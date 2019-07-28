@@ -1,10 +1,10 @@
 import  MeetingsFactory from '../MeetingsFactory';
-import Meeting from '../meeting';
+import Meeting from '../Meeting';
 describe('Check  card basic', () => {
     it('card should be checked', () => {
         const mf=new MeetingsFactory();
         const m1=mf.CreateMeeting("andrei","first meeting");
-        console.log(m1.Cards.length);
+        //console.log(m1.Cards.length);
         let res=m1.AllUnchecked();
         expect(res.isOk()).toBe(true);
         let result= false;
@@ -25,7 +25,7 @@ describe('Check  card basic', () => {
       it('number of cards checked', () => {
         const mf=new MeetingsFactory();
         const m1=mf.CreateMeeting("andrei","first meeting");
-        console.log(m1.Cards.length);
+        //console.log(m1.Cards.length);
         let res=m1.TotalNumberOfCardsChecked();
         expect(res.isOk()).toBe(true);
         let result= -1;

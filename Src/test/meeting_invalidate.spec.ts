@@ -1,5 +1,5 @@
 import  MeetingsFactory from '../MeetingsFactory';
-import Meeting from '../meeting';
+import Meeting from '../Meeting';
 import Participant from '../Participant';
 import { ok, err, Result } from 'neverthrow';
 
@@ -19,7 +19,7 @@ describe('Meeting Obsolete', () => {
         const now = Date.now();
         const spy = jest.spyOn(Date,'now');
         spy.mockImplementation(()=>{
-          console.log('calling DateTime Now');
+          //console.log('calling DateTime Now');
           return now + Meeting.MaxTimeToObsolete + 1000;
         } );
         expect(m1.IsObsolete()).toBe(true);
@@ -36,7 +36,7 @@ describe('Meeting Obsolete', () => {
         const now = Date.now();
         const spy = jest.spyOn(Date,'now');
         spy.mockImplementation(()=>{
-          console.log('calling DateTime Now');
+          //console.log('calling DateTime Now');
           return now + Meeting.MaxTimeToObsolete + 1000;
         } );
         expect(m1.IsObsolete()).toBe(true);

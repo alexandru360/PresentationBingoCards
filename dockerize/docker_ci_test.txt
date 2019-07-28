@@ -1,0 +1,6 @@
+FROM node:8 
+WORKDIR /app
+COPY . ./
+RUN yarn
+RUN yarn test
+CMD tail -f /dev/null

@@ -1,0 +1,1 @@
+docker build ../src -f docker_ci_test.txt -t bingo_ci_test

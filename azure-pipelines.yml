@@ -30,12 +30,18 @@ jobs:
         docker image ls
         docker container ls
         cp -r -v ./jest-stare  $(Build.ArtifactStagingDirectory)/jest-stare/ 
-    
+        cp ./junit.xml  $(Build.ArtifactStagingDirectory)/junit.xml 
       displayName: test DDD
     
     - task: PublishBuildArtifacts@1
       inputs:
-         artifactName: Tests
+        artifactName: Tests
       displayName: 'Publish Artifact: drop' 
+    
+    - task: PublishTestResults@2
+      inputs:
+        testRunner: JUnit
+        testResultsFiles: '$(Build.ArtifactStagingDirectory)/junit.xml'
+
     
     

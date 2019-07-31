@@ -1,0 +1,4 @@
+{
+    "private": true,
+    "workspaces": ["bingo-cards-api", "bingo-meeting-objects"]
+  }

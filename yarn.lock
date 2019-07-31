@@ -5130,10 +5130,10 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-neverthrow@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/neverthrow/-/neverthrow-1.0.3.tgz#b5cd88f262d3035d9188de39ce60cd32af34d2c4"
-  integrity sha512-RnlejxfjNALD4CF8AwqQN4UGCp7/0Vn/YjQUEmnOpatngnBY62Yi1Zp8vTmwevapJeezPHyebJN/Xqusf0ra0g==
+neverthrow@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/neverthrow/-/neverthrow-1.0.2.tgz#1a21780d588fcbc1fa73d85dd0c5b28aad3d24c0"
+  integrity sha512-AlaBYA1/9ZzRyPxlGEdqbK1ULP6qiTGX4f3D4pps23U6MAHKZmCnO6zK/RzIdIiIxwMYlBvZ6IAoQYkYbhrefA==
 
 next-tick@1, next-tick@^1.0.0:
   version "1.0.0"

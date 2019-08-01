@@ -1,0 +1,25 @@
+{
+  "name": "bingo-meeting-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "build": "tsc",
+    "compile": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.6.8",
+    "bingo-meeting-objects": "^1.0.0",
+    "clear": "^0.1.0",
+    "figlet": "^1.2.3",
+    "inquirer": "6.5.0",
+    "prompt": "^1.0.0",
+    "rxjs": "6.4.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}

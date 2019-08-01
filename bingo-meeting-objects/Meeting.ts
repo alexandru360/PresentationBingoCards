@@ -1,6 +1,6 @@
 import Participant from './Participant';
 import Cards from './Cards';
-import { ok, err, Result } from 'neverthrow';
+import { ok, err, Result, Err } from 'neverthrow';
 export default class Meeting{
 
     constructor(){
@@ -59,9 +59,12 @@ export default class Meeting{
             return ok(this.Cards.filter(it=>it.IsChecked()).length );
         }
         else{
-            //TODO :Make a proper error
+            // TODO :Make a proper error
             return err(new Error(`cannot see score for ${this.Id}`));
         }
+    }
+    public Percentage():Result<number,Error>{
+        return this.TotalNumberOfCardsChecked().andThen(it=> ok(Math.floor (it/this.TotalNumberOfCards() * 100)));
     }
     public TotalNumberOfCards():number{
         return this.Cards.length;

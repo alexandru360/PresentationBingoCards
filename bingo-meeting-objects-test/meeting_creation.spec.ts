@@ -10,6 +10,8 @@ describe("Meetings creation", () => {
         expect(m1.Name).toBe("first meeting");
         expect(m1.Participants.length).toBe(1);
         expect(m1.Participants[0].Name).toBe("andrei");
+        expect(m1.Percentage().isOk()).toBe(true);
+        m1.Percentage().map(it=> expect(it).toBe(0));
         let res=m1.AllUnchecked();
         expect(res.isOk()).toBe(true);
         let result= false;

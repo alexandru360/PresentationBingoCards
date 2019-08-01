@@ -1,0 +1,21 @@
+{
+  "name": "bingo-meeting-objects-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bingo-meeting-objects": "^1.0.0",
+    "jest": "^24.8.0",
+    "jest-junit": "^7.0.0",
+    "jest-stare": "^1.17.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}

@@ -1,4 +1,7 @@
 {
     "private": true,
-    "workspaces": ["bingo-cards-api", "bingo-meeting-objects"]
-  }
+    "workspaces": ["bingo-cards-api", "bingo-meeting-objects", "bingo-meeting-objects-test"],
+    "scripts": {
+      "test": "cd bingo-meeting-objects-test && yarn test"
+    }
+}

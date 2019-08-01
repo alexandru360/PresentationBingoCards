@@ -3,7 +3,8 @@
       "target": "es5",
       "module": "commonjs",
       "outDir": "dist",
-      "sourceMap": false,
+      "sourceMap": true,
+      "declaration": true,
       "allowSyntheticDefaultImports": true,
       "baseUrl": ".",
       "paths": {
@@ -19,6 +20,8 @@
       "**/*.ts"
     ],
     "exclude": [
-      "src/test/**/*.spec.ts"
+      "src/test/**/*.spec.ts",
+      "node_modules",
+      "dist"
     ]
   }

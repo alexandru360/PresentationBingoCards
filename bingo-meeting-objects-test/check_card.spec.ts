@@ -1,7 +1,7 @@
-import  MeetingsFactory from '../MeetingsFactory';
-import Meeting from '../Meeting';
-describe('Check  card basic', () => {
-    it('card should be checked', () => {
+import  MeetingsFactory from "bingo-meeting-objects/MeetingsFactory";
+import Meeting from "bingo-meeting-objects/Meeting";
+describe("Check  card basic", () => {
+    it("card should be checked", () => {
         const mf=new MeetingsFactory();
         const m1=mf.CreateMeeting("andrei","first meeting");
         //console.log(m1.Cards.length);
@@ -22,7 +22,7 @@ describe('Check  card basic', () => {
         
   
       })
-      it('number of cards checked', () => {
+      it("number of cards checked", () => {
         const mf=new MeetingsFactory();
         const m1=mf.CreateMeeting("andrei","first meeting");
         //console.log(m1.Cards.length);

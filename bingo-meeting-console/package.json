@@ -16,6 +16,7 @@
     "bingo-meeting-objects": "^1.0.0",
     "chalk": "^2.4.2",
     "clear": "^0.1.0",
+    "console.table": "^0.10.0",
     "figlet": "^1.2.3",
     "fullname": "^4.0.1",
     "inquirer": "6.5.0",

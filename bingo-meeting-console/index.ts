@@ -9,6 +9,7 @@ import * as inq from "inquirer";
 import fn from "username";
 const username = require("username");
 const chalk = require("chalk");
+const cTable = require("console.table");
 
 function mesageFromMeeting(m: Meeting): string {
   let perc: number = -1;
@@ -25,7 +26,7 @@ function makePrompt(m: Meeting): any {
     choices: m.Cards.map(it => {
       return { name: 
         it.Name + "(checked:" + it.IsChecked() + ")", value: it };
-    })
+    }).concat([new inq.Separator(), {name:"End Bingo Meeting",value:null}])
   };
 }
 function DisplayNameMeeting(m: Meeting): string {
@@ -66,6 +67,10 @@ async function main() {
       const m: Meeting = mf.CreateMeeting(result.username, result.meetingName);
       inq.prompt(promptSubject).ui.process.subscribe(
         ({ answer }) => {
+          if(answer == null){
+            promptSubject.complete();
+            return;
+          }
           m.CheckCardByParticipant(answer, m.Participants[0]);
 
           clear();
@@ -86,9 +91,10 @@ async function main() {
         () => {
           clear();
           console.log(`Finished meeting ${m.Name} for ${userName} `);
-          console.log(`Percentage ${perc}`) ;
-
-          
+          console.log(`Percentage ${perc}%`) ;
+          console.table(
+            m.Cards.map(it=> { return  { Card: it.Name, Checked: it.IsChecked()};})
+          );
         }
       );
 
@@ -103,7 +109,7 @@ async function main() {
 (async () => {
   try {
       await main();
-      //console.log(text);
+      
   } catch (e) {
       console.log(JSON.stringify(e));
   }

@@ -26,18 +26,41 @@ export default class Cards{
 
         let i=1;
         const ret=[];
+        let addCard = (name:string)=>{
+            let c=new Cards();
+            c.Name=name;
+            c.Id = i++;
+            ret.push(c);
+
+        }
+
+        addCard("Who just joined?");
+        addCard("Can you email that to everyone ?");
+        addCard("..., are you there ?");
+        addCard("Can you hear me?");
+        addCard("I'm sorry, I was on mute");
+        addCard("I'm sorry, connection issues");
+        addCard("Hello ? Hello ?");
+        addCard("Can we take this offline ?");
+        addCard("Can everyone see my screen ?");
+        addCard("No, still loading");
+        addCard("Sorry, I have to go to another call");
         
-        let c=new Cards();
-        c.Name="Who just joined?";
-        c.Id = i++;
-        ret.push(c);
+        // let c=new Cards();
+        // c.Name="Who just joined?";
+        // c.Id = i++;
+        // ret.push(c);
 
-        c=new Cards();
-        c.Name="Can you email that to everyone ?";
-        c.Id = i++;
-        ret.push(c);
+        // c=new Cards();
+        // c.Name="Can you email that to everyone ?";
+        // c.Id = i++;
+        // ret.push(c);
+        
+        
 
-        return ret;
+        
+        return ret.sort((a,b)=> a.Name.localeCompare(b.Name));
     }
+    
     
 }

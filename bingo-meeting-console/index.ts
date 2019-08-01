@@ -23,10 +23,11 @@ function makePrompt(m: Meeting): any {
     type: "list",
     name: "card",
     message: mesageFromMeeting(m),
+    pageSize: m.Cards.length +2,
     choices: m.Cards.map(it => {
       return { name: 
         it.Name + "(checked:" + it.IsChecked() + ")", value: it };
-    }).concat([new inq.Separator(), {name:"End Bingo Meeting",value:null}])
+    }).concat([new inq.Separator(), {name:`End Bingo Meeting ${m.Name}`,value:null}])
   };
 }
 function DisplayNameMeeting(m: Meeting): string {
@@ -91,10 +92,28 @@ async function main() {
         () => {
           clear();
           console.log(`Finished meeting ${m.Name} for ${userName} `);
-          console.log(`Percentage ${perc}%`) ;
           console.table(
-            m.Cards.map(it=> { return  { Card: it.Name, Checked: it.IsChecked()};})
+            m.Cards
+            .sort((a,b)=>{
+              if(a.IsChecked() && b.IsChecked()) {
+                return a.Name.localeCompare(b.Name);
+              }
+              
+              if(!(a.IsChecked()) && (!b.IsChecked())) {
+                return a.Name.localeCompare(b.Name);
+              }
+              if(a.IsChecked()) {
+                return -1;
+              }
+
+              return 1;
+
+            })
+
+            .map(it=> { return  { Card: it.Name, Checked: it.IsChecked() ? chalk.white.bgBlue.bold(true): false};})
           );
+          console.log(chalk.white.bgBlue.bold(`Percentage ${perc}%`)) ;
+          
         }
       );
 

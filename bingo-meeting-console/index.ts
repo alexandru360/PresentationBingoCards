@@ -6,87 +6,105 @@ import * as Rx from "rxjs";
 import * as pr from "prompt";
 import Meeting from "bingo-meeting-objects/Meeting";
 import * as inq from "inquirer";
-import { json } from "body-parser";
-function mesageFromMeeting(m:Meeting):string {
-  let perc:number= -1;
-  m.Percentage().map(it=>perc=it);
-  const ret:string="Please choose a card for meeting " + m.Name + " completed  " +perc +"%";
+import fn from "username";
+const username = require("username");
+const chalk = require("chalk");
+
+function mesageFromMeeting(m: Meeting): string {
+  let perc: number = -1;
+  m.Percentage().map(it => (perc = it));
+  const ret: string =
+    "Please choose a card for meeting " + m.Name + " completed  " + perc + "%";
   return ret;
 }
-function makePrompt(m:Meeting):any {
+function makePrompt(m: Meeting): any {
   return {
     type: "list",
     name: "card",
-    message:mesageFromMeeting(m) ,
-    choices: m.Cards.map(it=> { return {name : it.Name + "(checked:"+ it.IsChecked()+")", value : it}; })
-  }
+    message: mesageFromMeeting(m),
+    choices: m.Cards.map(it => {
+      return { name: 
+        it.Name + "(checked:" + it.IsChecked() + ")", value: it };
+    })
+  };
 }
-function DisplayNameMeeting(m:Meeting):string{
-
-  let perc:number= -1;
-  m.Percentage().map(it=>perc=it);
-return `${m.Name} ${perc}%`;
+function DisplayNameMeeting(m: Meeting): string {
+  let perc: number = -1;
+  m.Percentage().map(it => (perc = it));
+  return `${m.Name} ${perc}%`;
 }
-clear();
-console.log(figlet.textSync("Bingo Meetings", { horizontalLayout: "full" }));
-const promptSubject:Rx.Subject<any> = new Rx.Subject();
 
+async function main() {
+  clear();
+  const userName :string = await username();
 
+  console.log(figlet.textSync("Bingo Meetings", { horizontalLayout: "full" }));
+  const promptSubject: Rx.Subject<any> = new Rx.Subject();
 
-
-
-const prompt_attributes = [
+  const prompt_attributes = [
     {
-        name: "meetingName",
-        required:true,
-        descriptiom:"meeting name"
-
+      name: "meetingName",
+      required: true,
+      description: chalk.white.bgBlue.bold("meeting name")
     },
     {
-        name: "username",
+      name: "username",
+      default: userName
     }
+  ];
+  let perc: number = -1;
 
-];
+  pr.message = " Please enter ";
+  pr.start();
 
-pr.message= " Please enter ";
-pr.start();
+  pr.get(prompt_attributes, function(err: any, result: any) {
+    if (err) {
+      console.log(err);
+      return 1;
+    } else {
+      const mf: MeetingsFactory = new MeetingsFactory();
+      const m: Meeting = mf.CreateMeeting(result.username, result.meetingName);
+      inq.prompt(promptSubject).ui.process.subscribe(
+        ({ answer }) => {
+          m.CheckCardByParticipant(answer, m.Participants[0]);
 
-pr.get(prompt_attributes, function (err:any, result:any) {
-     if (err) {
-         console.log(err);
-         return 1;
-     } else {
-
-        const mf : MeetingsFactory =new MeetingsFactory();
-        const m : Meeting = mf.CreateMeeting(result.username,result.meetingName);
-        inq.prompt(promptSubject).ui.process.subscribe(({ answer }) => {
-          m.CheckCardByParticipant(answer,m.Participants[0]);
-          
           clear();
-          console.log(figlet.textSync(DisplayNameMeeting(m), { horizontalLayout: "full" }));
-          
-          let perc:number= -1;
-          m.Percentage().map(it=>perc=it);
-          if(perc ===100 || perc ===-1){
+          console.log(
+            figlet.textSync(DisplayNameMeeting(m), { horizontalLayout: "full" })
+          );
+
+          m.Percentage().map(it => (perc = it));
+          if (perc === 100 || perc === -1) {
             promptSubject.complete();
-          }
-          else{
+          } else {
             promptSubject.next(makePrompt(m));
           }
-          
-        }, (err) => {
+        },
+        err => {
           console.warn(err);
-        }, () => {
-          console.log("Finished meeting \n");
-          console.log(figlet.textSync(DisplayNameMeeting(m), { horizontalLayout: "full" }));
+        },
+        () => {
+          clear();
+          console.log(`Finished meeting ${m.Name} for ${userName} `);
+          console.log(`Percentage ${perc}`) ;
+
           
-        });
+        }
+      );
 
-        clear();
-        console.log(figlet.textSync(DisplayNameMeeting(m), { horizontalLayout: "full" }));
-        promptSubject.next(makePrompt(m));
-
-      }});
-        
-
-
+      clear();
+      console.log(
+        figlet.textSync(DisplayNameMeeting(m), { horizontalLayout: "full" })
+      );
+      promptSubject.next(makePrompt(m));
+    }
+  });
+}
+(async () => {
+  try {
+      await main();
+      //console.log(text);
+  } catch (e) {
+      console.log(JSON.stringify(e));
+  }
+})();

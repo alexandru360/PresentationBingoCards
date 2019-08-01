@@ -14,12 +14,15 @@
   "dependencies": {
     "@types/node": "^12.6.8",
     "bingo-meeting-objects": "^1.0.0",
+    "chalk": "^2.4.2",
     "clear": "^0.1.0",
     "figlet": "^1.2.3",
+    "fullname": "^4.0.1",
     "inquirer": "6.5.0",
     "prompt": "^1.0.0",
     "rxjs": "6.4.0",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "username": "^5.1.0"
   }
 }

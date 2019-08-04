@@ -1,9 +1,9 @@
-import Meeting from './Meeting';
-import Participant from './Participant';
-import Guid from './Guid';
-import Cards from './Cards';
+import {Meeting} from './Meeting';
+import {Participant} from './Participant';
+import {Guid} from './Guid';
+import {Cards} from './Cards';
 
-export default class MeetingsFactory{
+export class MeetingsFactory{
     public CreateMeeting(userName:string, meetingName: string): Meeting{        
         let p = new Participant();
         p.Id = Guid.newGuid();

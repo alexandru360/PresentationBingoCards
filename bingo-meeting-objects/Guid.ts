@@ -1,5 +1,5 @@
 // From: https://stackoverflow.com/questions/26501688/a-typescript-guid-class
-export default class Guid {
+export class Guid {
     static newGuid() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0,

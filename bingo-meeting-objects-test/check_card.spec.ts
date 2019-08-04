@@ -1,5 +1,5 @@
-import  MeetingsFactory from "bingo-meeting-objects/MeetingsFactory";
-import Meeting from "bingo-meeting-objects/Meeting";
+import  {MeetingsFactory} from "bingo-meeting-objects/MeetingsFactory";
+import {Meeting} from "bingo-meeting-objects/Meeting";
 describe("Check  card basic", () => {
     it("card should be checked", () => {
         const mf=new MeetingsFactory();

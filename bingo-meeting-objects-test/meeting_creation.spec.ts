@@ -1,7 +1,7 @@
-import  MeetingsFactory from "bingo-meeting-objects/MeetingsFactory";
-import Meeting from "bingo-meeting-objects/Meeting";
-import Cards from "bingo-meeting-objects/Cards";
-import  Participant  from "bingo-meeting-objects/Participant";
+import  {MeetingsFactory} from "bingo-meeting-objects/MeetingsFactory";
+import {Meeting} from "bingo-meeting-objects/Meeting";
+import {Cards} from "bingo-meeting-objects/Cards";
+import  {Participant}  from "bingo-meeting-objects/Participant";
 describe("Meetings creation", () => {
     it("a meeting should have been created properly", () => {
         const mf=new MeetingsFactory();

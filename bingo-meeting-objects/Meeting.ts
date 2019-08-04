@@ -1,7 +1,7 @@
-import Participant from './Participant';
-import Cards from './Cards';
+import {Participant} from './Participant';
+import {Cards} from './Cards';
 import { ok, err, Result, Err } from 'neverthrow';
-export default class Meeting{
+export class Meeting{
 
     constructor(){
         this.Participants = [];        

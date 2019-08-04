@@ -1,6 +1,6 @@
-import  MeetingsFactory from "bingo-meeting-objects/MeetingsFactory";
-import Meeting from "bingo-meeting-objects/Meeting";
-import Participant from "bingo-meeting-objects/Participant";
+import  {MeetingsFactory} from "bingo-meeting-objects/MeetingsFactory";
+import {Meeting} from "bingo-meeting-objects/Meeting";
+import {Participant} from "bingo-meeting-objects/Participant";
 import { ok, err, Result } from "neverthrow";
 
 describe("Meeting Obsolete", () => {

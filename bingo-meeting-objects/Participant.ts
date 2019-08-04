@@ -1,4 +1,4 @@
-export default class Participant{
+export class Participant{
     Id: any;
     Name: string;
 }

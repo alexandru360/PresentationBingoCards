@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "ts-node index.ts",
-    "build": "nexe dist/index.js",
+    "build": "pkg dist/index.js -c package.json",
     "compile": "tsc"
   },
   "author": "",

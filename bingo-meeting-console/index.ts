@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-import {MeetingsFactory} from "bingo-meeting-objects/MeetingsFactory";
+import {MeetingsFactory, Meeting} from "bingo-meeting-objects";
 import * as figlet from "figlet";
 import * as clear from "clear";
 import * as Rx from "rxjs";
 import * as pr from "prompt";
-import {Meeting} from "bingo-meeting-objects/Meeting";
 import * as inq from "inquirer";
 import fn from "username";
 const username = require("username");

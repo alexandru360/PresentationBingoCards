@@ -1,0 +1,8 @@
+{
+    "files": [],
+    "references": [
+        { "path": "bingo-meeting-console" },
+        { "path": "bingo-meeting-objects" },
+        
+    ]
+}

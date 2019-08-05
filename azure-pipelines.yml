@@ -26,19 +26,14 @@ jobs:
         ls -l
         chmod 777 ./ci_test.bat 
         ./ci_test.bat
-
+        
         docker image ls
         docker container ls
         cp -r -v ./jest-stare  $(Build.ArtifactStagingDirectory)/jest-stare/ 
         cp ./junit.xml  $(Build.ArtifactStagingDirectory)/junit.xml 
         cp ./cobertura-coverage.xml $(Build.ArtifactStagingDirectory)/cobertura-coverage.xml 
       displayName: test DDD
-    
-    - task: PublishBuildArtifacts@1
-      inputs:
-        artifactName: Tests
-      displayName: 'Publish Artifact: drop' 
-    
+
     - task: PublishTestResults@2
       inputs:
         testRunner: JUnit
@@ -48,4 +43,25 @@ jobs:
         codeCoverageTool: 'cobertura'
         summaryFileLocation: '$(Build.ArtifactStagingDirectory)/cobertura-coverage.xml'
     
+    
+    - script: |
+        
+        cd dockerize
+        ls -l
+        chmod 777 ./build_console.bat
+        ./build_console.bat
+        
+        docker image ls
+        docker container ls
+        cp ./bingo-meeting-console-win.exe  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-win.exe 
+        cp ./bingo-meeting-console-linux  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-linux
+        cp ./bingo-meeting-console-macos  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-macos
+
+      displayName: console artifacts 
+    
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        artifactName: Tests
+      displayName: 'Publish Artifact: drop' 
     

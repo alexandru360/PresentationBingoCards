@@ -3,7 +3,7 @@
 ![Azure DevOps releases](https://alexandru360.vsrm.visualstudio.com/_apis/public/Release/badge/ba6c7db7-574d-4c8f-adc3-d7aff9b43cf0/1/1)
 
 Azure Devops CI and artifacts:
-https://alexandru360.visualstudio.com/BingoCards/
+https://alexandru360.visualstudio.com/BingoCards/_build?definitionId=2
 
 # PresentationBingoCards
 Bingo cards for meetings :)

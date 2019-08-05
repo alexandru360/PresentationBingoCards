@@ -56,13 +56,13 @@ jobs:
 
         pwd
         ls -lh
-        
+        echo ' mkdir'
         mkdir $(Build.ArtifactStagingDirectory)/console
-
+        echo ' copy to artifacts'
         cp ./bingo-meeting-console-win.exe  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-win.exe 
         cp ./bingo-meeting-console-linux  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-linux
         cp ./bingo-meeting-console-macos  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-macos
-
+        echo 'finish copy'
       displayName: console artifacts 
     
     

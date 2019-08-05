@@ -50,13 +50,15 @@ jobs:
         ls -l
         chmod 777 ./build_console.bat
         ./build_console.bat
-        echp ' done console bat'
+        echo ' done console bat'
         docker image ls
         docker container ls
 
         pwd
         ls -lh
         
+        mkdir $(Build.ArtifactStagingDirectory)/console
+
         cp ./bingo-meeting-console-win.exe  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-win.exe 
         cp ./bingo-meeting-console-linux  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-linux
         cp ./bingo-meeting-console-macos  $(Build.ArtifactStagingDirectory)/console/bingo-meeting-console-macos

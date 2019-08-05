@@ -68,6 +68,6 @@ jobs:
     
     - task: PublishBuildArtifacts@1
       inputs:
-        artifactName: Tests
+        artifactName: DataArtifacts
       displayName: 'Publish Artifact: drop' 
     

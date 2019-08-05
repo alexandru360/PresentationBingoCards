@@ -1,6 +1,8 @@
-[![Build Status](https://dev.azure.com/ignatandrei0674/BingoAzureDevOps/_apis/build/status/ignatandrei.PresentationBingoCards?branchName=master)](https://dev.azure.com/ignatandrei0674/BingoAzureDevOps/_build/latest?definitionId=4&branchName=master)
-![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/ignatandrei0674/BingoAzureDevOps/4)
-![Azure DevOps tests](https://img.shields.io/azure-devops/tests/ignatandrei0674/BingoAzureDevOps/4)
+[![Build Status](https://alexandru360.visualstudio.com/BingoCards/_apis/build/status/alexandru360.PresentationBingoCards?branchName=master)](https://alexandru360.visualstudio.com/BingoCards/_build/latest?definitionId=2&branchName=master)
+![Azure DevOps tests](https://img.shields.io/azure-devops/tests/alexandru360/BingoCards/2)
+
+Azure Devops CI:
+https://alexandru360.visualstudio.com/BingoCards/
 
 # PresentationBingoCards
 Bingo cards for meetings :)

@@ -12,9 +12,14 @@ export class MeetingService {
     // async  findAll(): Promise<Meeting[]> {
     //     return await this.contactRepository.find();
     // }
-
+    constructor(){
+        this.meetings = [];
+    }
+    public meetings: Array<Meeting> ;
     async  create(userName: string, meetingName: string): Promise<Meeting> {
-        return Promise.resolve(new MeetingsFactory().CreateMeeting(userName, meetingName));
+        const m = new MeetingsFactory().CreateMeeting(userName, meetingName);
+        this.meetings.push(m);
+        return Promise.resolve(m);
     }
 
     // async update(contact: Contact): Promise<UpdateResult> {

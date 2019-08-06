@@ -6,7 +6,5 @@ export class AppService {
     return 'Hello World!';
   }
 
-  ala(): string {
-    return 'bala';
-  }
+  
 }

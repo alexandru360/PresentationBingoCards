@@ -3,6 +3,7 @@
     "references": [
         { "path": "bingo-meeting-console" },
         { "path": "bingo-meeting-objects" },
+        { "path": "bingo-cards-api" }
         
     ]
 }

@@ -27,7 +27,8 @@
     "rxjs": "^6.2.2",
     "sqlite3": "^4.0.6",
     "typeorm": "^0.2.14",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "bingo-meeting-objects": "1.0.0"
   },
   "devDependencies": {
     "@nestjs/testing": "^5.1.0",

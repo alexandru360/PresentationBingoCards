@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Repository, UpdateResult, DeleteResult } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Meeting, MeetingsFactory } from 'bingo-meeting-objects';
+import { Meeting, MeetingsFactory, Participant } from 'bingo-meeting-objects';
+import { ActualMeeting } from './ActualMeeting';
 
 @Injectable()
 export class MeetingService {
@@ -15,7 +14,28 @@ export class MeetingService {
     constructor(){
         this.meetings = [];
     }
-    public meetings: Array<Meeting> ;
+    public ActualMeetings(): ActualMeeting []{
+
+            return this.meetings
+            .filter(it => !it.IsObsolete())
+            .map(it => {  return {
+                    idMeeting: it.Id,
+                    participantName: it.Participants[0].Name} as ActualMeeting; });
+    }
+
+    public AddParticipant(idMeeting: any, nameParticipant: string){
+        const m = this.meetings.find(it => it.Id === idMeeting );
+        // TODO: throw if meeting is null
+        const p = new Participant();
+        p.Id = m.Participants.length + 1;
+        p.Name = nameParticipant;
+        m.AddParticipant(p);
+        return m;
+
+    }
+    
+    private meetings: Array<Meeting> ;
+
     async  create(userName: string, meetingName: string): Promise<Meeting> {
         const m = new MeetingsFactory().CreateMeeting(userName, meetingName);
         this.meetings.push(m);

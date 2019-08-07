@@ -44,6 +44,12 @@ export class Meeting{
             return err(new Error(`cannot verify card/participant for ${this.Id}`));
         }
     }
+    public FindParticipantAfterName(name: string): Participant{
+        return this.Participants.find(it=>it.Name === name);
+    }
+    public FindCard(idCard: number): Cards{
+        return this.Cards.find(it=>it.Id === idCard);
+    }
     public CheckCardByParticipant(c: Cards , p:Participant): Result<Meeting,Error>{
         //TODO: verify participant is added first or add
         //TODO: verify card is added first

@@ -1,7 +1,8 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-export class AddParticipant {
+
+export class CheckCardParticipant {
   @ApiModelProperty()
   readonly userName: string;
   @ApiModelProperty()
-  readonly meetingId: string;
+  readonly cardId: number;
 }

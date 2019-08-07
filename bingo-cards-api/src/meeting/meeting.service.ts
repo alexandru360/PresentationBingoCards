@@ -4,6 +4,9 @@ import { ActualMeeting } from './ActualMeeting';
 
 @Injectable()
 export class MeetingService {
+    findMeeting(id: any): Meeting {
+        return this.meetings.find(it=>it.Id == id);
+    }
     // constructor(
     //     @InjectRepository(Meeting)
     //     private contactRepository: Repository<Meeting>,
@@ -23,7 +26,7 @@ export class MeetingService {
                     participantName: it.Participants[0].Name} as ActualMeeting; });
     }
 
-    public AddParticipant(idMeeting: any, nameParticipant: string){
+    public AddParticipant(idMeeting: any, nameParticipant: string): Meeting{
         const m = this.meetings.find(it => it.Id === idMeeting );
         // TODO: throw if meeting is null
         const p = new Participant();
@@ -33,7 +36,18 @@ export class MeetingService {
         return m;
 
     }
-    
+    public checkCard(idMeeting: any, idCard: number, nameParticipant:string ): Meeting{
+        const m = this.meetings.find(it => it.Id === idMeeting );
+        // TODO: throw if meeting is null
+        const c = m.FindCard(idCard);
+        // TODO: throw if card is null
+        const p = m.FindParticipantAfterName(nameParticipant);
+        // TODO: throw if participant is null
+
+        m.CheckCardByParticipant(c, p);
+        return m;
+
+    }
     private meetings: Array<Meeting> ;
 
     async  create(userName: string, meetingName: string): Promise<Meeting> {

@@ -5,7 +5,7 @@ import { ActualMeeting } from './ActualMeeting';
 @Injectable()
 export class MeetingService {
     findMeeting(id: any): Meeting {
-        return this.meetings.find(it=>it.Id == id);
+        return this.meetings.find(it => it.Id === id);
     }
     // constructor(
     //     @InjectRepository(Meeting)
@@ -19,6 +19,7 @@ export class MeetingService {
     }
     public ActualMeetings(): ActualMeeting []{
 
+        // TODO: create in meeting a Organizer property and return Participants[0]
             return this.meetings
             .filter(it => !it.IsObsolete())
             .map(it => {  return {
@@ -36,7 +37,7 @@ export class MeetingService {
         return m;
 
     }
-    public checkCard(idMeeting: any, idCard: number, nameParticipant:string ): Meeting{
+    public checkCard(idMeeting: any, idCard: number, nameParticipant: string ): Meeting{
         const m = this.meetings.find(it => it.Id === idMeeting );
         // TODO: throw if meeting is null
         const c = m.FindCard(idCard);

@@ -4,6 +4,7 @@ import { Meeting, Participant } from 'bingo-meeting-objects';
 import {CreateMeeting } from './CreateMeeting';
 import { ActualMeeting } from './ActualMeeting';
 import { CheckCardParticipant } from './CheckCardParticipant';
+import { AddParticipant } from './AddParticipant';
 
 @Controller('meetings')
 export class MeetingsController {
@@ -23,27 +24,15 @@ export class MeetingsController {
         // console.log(`userName : ${JSON.stringify(cm.userName)}  meetingName: ${JSON.stringify(cm.meetingName)}`);
         return this.meetingsService.create(cm.userName, cm.meetingName);
     }
-    @Put(':id/addParticipant')
-    async addParticipant(@Param('id') id: any, @Body() nameParticipant: string): Promise<Meeting> {
+    @Put('addParticipant')
+    async addParticipant(@Body() addParticipant: AddParticipant): Promise<Meeting> {
         // console.log(`userName : ${JSON.stringify(cm.userName)}  meetingName: ${JSON.stringify(cm.meetingName)}`);
-        return this.meetingsService.AddParticipant(id, nameParticipant);
+        return this.meetingsService.AddParticipant(addParticipant.meetingId, addParticipant.nameParticipant);
     }
     @Put(':id/checkCard')
     async checkCard(@Param('id') id: any, @Body() CP: CheckCardParticipant): Promise<Meeting> {
         // console.log(`userName : ${JSON.stringify(cm.userName)}  meetingName: ${JSON.stringify(cm.meetingName)}`);
         return this.meetingsService.checkCard(id, CP.cardId, CP.userName);
     }
-
-    // @Put(':id/update')
-    // async update(@Param('id') id, @Body() contactData: Contact): Promise<any> {
-    //     contactData.id = Number(id);
-    //     console.log('Update #' + contactData.id)
-    //     return this.contactsService.update(contactData);
-    // }
-
-    // @Delete(':id/delete')
-    // async delete(@Param('id') id): Promise<any> {
-    //   return this.contactsService.delete(id);
-    // }
 
 }

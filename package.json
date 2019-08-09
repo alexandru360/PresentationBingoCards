@@ -1,9 +1,13 @@
 {
     "private": true,
-    "workspaces": ["bingo-cards-api", "bingo-meeting-objects", "bingo-meeting-objects-test","bingo-meeting-console"],
+    "workspaces": ["bingo-cards-api","bingo-cards-ui", "bingo-meeting-objects", "bingo-meeting-objects-test","bingo-meeting-console"],
     "scripts": {
       "api": "cd bingo-cards-api && yarn start",
+      "ui": "cd bingo-cards-ui && yarn start",
+      "ui:build": "cd bingo-cards-ui && yarn build",
+      "ui:lint": "cd bingo-cards-ui && yarn lint",
       "test": "cd bingo-meeting-objects-test && yarn test",
+      "test:ui":"cd bingo-cards-ui && yarn test",
       "runConsole": "cd bingo-meeting-console && yarn start",
       "buildConsole":"yarn build && cd bingo-meeting-console && yarn build",
       "build":"tsc -b ."

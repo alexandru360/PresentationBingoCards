@@ -6,27 +6,18 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -b .",
-    "compile": "tsc",
-    "test": "jest"
+    "compile": "tsc"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
-    "jest": "^24.8.0",
-    "jest-junit": "^7.0.0",
-    "jest-stare": "^1.17.0",
     "nodemon": "^1.19.1",
     "rimraf": "^2.6.3",
-    "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "jest": "^24.8.0",
-    "jest-junit": "^7.0.0",
-    "jest-stare": "^1.17.0",
     "neverthrow": "1.0.2"
   }
 }

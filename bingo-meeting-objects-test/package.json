@@ -10,10 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^24.0.17",
     "bingo-meeting-objects": "^1.0.0",
     "jest": "^24.8.0",
     "jest-junit": "^7.0.0",
-    "jest-stare": "^1.17.0",
+    "jest-stare": "^1.18.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"

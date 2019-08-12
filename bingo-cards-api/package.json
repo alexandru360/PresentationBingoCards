@@ -14,7 +14,8 @@
     "start:prod": "node dist/main.js",
     "start:hmr": "node dist/server",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "webpack --config webpack.config.js",
+    "postinstall": "npm run prestart:prod"
   },
   "dependencies": {
     

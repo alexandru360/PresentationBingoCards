@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
-import { MeetingService } from './meeting.service';
+import { MeetingService } from 'bingo-cards-api-objects/src/meeting.service';
 import { Meeting, Participant } from 'bingo-meeting-objects';
-import {CreateMeeting } from './CreateMeeting';
-import { ActualMeeting } from './ActualMeeting';
-import { CheckCardParticipant } from './CheckCardParticipant';
-import { AddParticipant } from './AddParticipant';
+import {CreateMeeting } from 'bingo-cards-api-objects/src/CreateMeeting';
+import { ActualMeeting } from 'bingo-cards-api-objects/src/ActualMeeting';
+import { CheckCardParticipant } from 'bingo-cards-api-objects/src/CheckCardParticipant';
+import { AddParticipant } from 'bingo-cards-api-objects/src/AddParticipant';
 
 @Controller('meetings')
 export class MeetingsController {

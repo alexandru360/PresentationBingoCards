@@ -17,10 +17,12 @@
     "webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {
+    
     "@nestjs/common": "^5.1.0",
     "@nestjs/core": "^5.1.0",
     "@nestjs/swagger": "^3.1.0",
     "@nestjs/typeorm": "^5.3.0",
+    "bingo-cards-api-objects":"^1.0.0",
     "bingo-meeting-objects": "^1.0.0",
     "npm": "^6.10.3",
     "reflect-metadata": "^0.1.12",

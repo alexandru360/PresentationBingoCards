@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MeetingService } from './meeting.service';
+import { MeetingService } from 'bingo-cards-api-objects/src/meeting.service';
 import { MeetingsController } from './meetings.controller';
 
 @Module({

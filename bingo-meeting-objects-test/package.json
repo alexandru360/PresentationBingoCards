@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/jest": "^24.0.17",
     "bingo-meeting-objects": "^1.0.0",
+    "bingo-cards-api-objects":"^1.0.0",
     "jest": "^24.8.0",
     "jest-junit": "^7.0.0",
     "jest-stare": "^1.18.1",

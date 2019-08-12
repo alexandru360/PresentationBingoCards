@@ -67,3 +67,5 @@ typings/
 
 # next.js build output
 .next
+dockerize/cobertura-coverage.xml
+dockerize/junit.xml

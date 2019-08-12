@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
+
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
     .setTitle('Bingo API')
@@ -13,6 +14,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
   app.enableCors();
-  await app.listen(process.env.PORT || 3000);
+  const port: string = process.env.PORT || "3000";
+  await app.listen(parseInt(port, 10));
 }
 bootstrap();

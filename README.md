@@ -16,4 +16,4 @@ Every time in a meeting that a participant hears a phrase (like “ Hi, can you 
 
 ## Heroku api link
 
-https://bingo-meeting-api.herokuapp.com/api
+http://bingo-meeting-api.herokuapp.com/api

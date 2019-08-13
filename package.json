@@ -3,7 +3,7 @@
     "workspaces": ["bingo-cards-api-objects","bingo-cards-api","bingo-cards-ui", "bingo-meeting-objects", "bingo-meeting-objects-test","bingo-meeting-console"],
     "scripts": {
       "api": "cd bingo-cards-api && yarn start",
-      "start:prod": "cd bingo-cards-api && yarn start",
+      "start": "cd bingo-cards-api && yarn start",
       "ui": "cd bingo-cards-ui && yarn start",
       "ui:build": "cd bingo-cards-ui && yarn build",
       "ui:lint": "cd bingo-cards-ui && yarn lint",

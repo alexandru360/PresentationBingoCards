@@ -12,6 +12,5 @@
       "runConsole": "cd bingo-meeting-console && yarn start",
       "buildConsole":"yarn build && cd bingo-meeting-console && yarn build",
       "build":"tsc -b ."
-
     }
 }

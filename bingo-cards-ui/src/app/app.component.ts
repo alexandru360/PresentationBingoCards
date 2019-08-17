@@ -13,7 +13,7 @@ import { CardsService } from './cards.service';
 export class AppComponent implements OnInit {
 
 
-  title = 'bingo-cards-ui';
+  title = 'Bingo Meetings';
   meetings: ActualMeeting[];
   createMeetingForm: FormGroup;
 
@@ -31,13 +31,14 @@ export class AppComponent implements OnInit {
     this.cardsService.GetMeetings().subscribe(it => this.meetings = it);
   }
   onSubmit(data: ICreateMeeting) {
-    // Process checkout data here
-    window.alert(JSON.stringify(data));
-    this.cardsService.SaveMeeting(data).subscribe(it=>{
-      window.alert(JSON.stringify(it));
+
+    this.createMeetingForm.disable();
+    this.cardsService.SaveMeeting(data).subscribe(it => {
+      
+      this.createMeetingForm.enable();
       this.createMeetingForm.reset();
       this.refreshMeetings();
-    })
-    
+    });
+
   }
 }

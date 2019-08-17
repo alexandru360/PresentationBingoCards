@@ -11,6 +11,8 @@
   },
   "private": true,
   "dependencies": {
+    "bingo-cards-api-objects":"^1.0.0",
+    "bingo-meeting-objects": "^1.0.0",
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",

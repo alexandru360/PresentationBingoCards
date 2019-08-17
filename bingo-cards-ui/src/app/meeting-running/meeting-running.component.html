@@ -1,1 +1,18 @@
-<p>meeting-running works!</p>
+<p *ngIf="actualMeeting == null">Retrieving details for {{ id }}</p>
+<div *ngIf="actualMeeting != null">
+  <h2>
+    Meeting {{ actualMeeting.Name }} by {{ actualMeeting.Creator().Name }}
+  </h2>
+  Participants:
+  <ul>
+    <li *ngFor="let p of actualMeeting.Participants">
+      {{ p.Name }}
+    </li>
+  </ul>
+  Cards:
+  <ol>
+    <li *ngFor="let c of actualMeeting.Cards">
+      {{ c.Name }}
+    </li>
+  </ol>
+</div>

@@ -9,12 +9,16 @@ import { ActualMeeting } from 'bingo-cards-api-objects';
 })
 export class CardsService {
 
-  private urlApi= 'http://bingo-meeting-api.herokuapp.com/';
+  private urlApi = 'http://bingo-meeting-api.herokuapp.com/';
 
   constructor(private httpAPI: HttpClient) {
 
   }
+  public GetMeeting(id: string): Observable<Meeting> {
 
+    const url: string = this.urlApi + 'meetings/' + id;
+    return this.httpAPI.get<Meeting>(url);
+}
   public GetMeetings(): Observable<ActualMeeting[]> {
 
       const url: string = this.urlApi + 'meetings';
@@ -22,6 +26,6 @@ export class CardsService {
   }
   public SaveMeeting(create: ICreateMeeting): Observable<Meeting> {
     const url: string = this.urlApi + 'meetings';
-    return this.httpAPI.post<Meeting>(url,create);
+    return this.httpAPI.post<Meeting>(url, create);
   }
 }

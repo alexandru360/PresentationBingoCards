@@ -29,8 +29,8 @@
 <ul >
   <li *ngFor="let m of meetings">
     <h2>
-      <a [title]="m.meetingName +' details'"  rel="noopener" [routerLink]="['/meetings', idMeeting]">
-        {{m.meetingName}}  created by {{m.participantName}}</a>
+      <a [title]="m.meetingName +' details'"  rel="noopener" [routerLink]="['/meetings', m.idMeeting]">
+        {{m.meetingName}}  created by {{m.participantName}} </a>
     </h2>
   </li>
 </ul>

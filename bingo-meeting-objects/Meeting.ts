@@ -3,10 +3,19 @@ import {Cards} from './Cards';
 import { ok, err, Result, Err } from 'neverthrow';
 export class Meeting{
 
-    constructor(){
-        this.Participants = [];        
-        this.Cards = [];
-        this.startedMeeting = Date.now();
+    constructor(m?:Meeting){
+        if(m == null){
+            this.Participants = [];        
+            this.Cards = [];
+            this.startedMeeting = Date.now();
+        }
+        else{
+            for (var i in m) {
+                if (m.hasOwnProperty(i)) {
+                    this[i] = m[i];
+                }
+              }
+        }
     }
     public static  MaxTimeToObsolete=35 * 60 * 1000;
     public static MaxTimeToSeeResult = 65 * 60 * 1000;
@@ -24,6 +33,9 @@ export class Meeting{
 
         this.Participants.push(p);
         return ok(this.Participants.length);
+    }
+    public Creator():Participant{
+        return this.Participants[0];
     }
     public AllUnchecked(): Result< boolean, Error>{
         

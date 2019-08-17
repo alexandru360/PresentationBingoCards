@@ -24,6 +24,7 @@ export class MeetingService {
             .filter(it => !it.IsObsolete())
             .map(it => {  return {
                     idMeeting: it.Id,
+                    meetingName: it.Name,
                     participantName: it.Participants[0].Name} as ActualMeeting; });
     }
 

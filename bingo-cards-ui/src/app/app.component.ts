@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Meeting, ICreateMeeting} from 'bingo-meeting-objects';
-import {CreateMeeting} from 'bingo-cards-api-objects';
+import {CreateMeeting, ActualMeeting} from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CardsService } from './cards.service';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,34 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
 
   title = 'bingo-cards-ui';
-  meetings: Meeting[];
+  meetings: ActualMeeting[];
   createMeetingForm: FormGroup;
 
-  constructor( private formBuilder: FormBuilder) {
+  constructor( private formBuilder: FormBuilder, private cardsService: CardsService) {
     this.meetings = [];
-    // why this gives an compilation error if we put new CreateMeeting ? references? 
+    // why this gives an compilation error if we put new CreateMeeting ? references?
     const c: ICreateMeeting = {userName: '', meetingName: ''};
     this.createMeetingForm = this.formBuilder.group(c);
+  }
+
+  ngOnInit(): void {
+    this.refreshMeetings();
+  }
+  refreshMeetings(): void {
+    this.cardsService.GetMeetings().subscribe(it => this.meetings = it);
   }
   onSubmit(data: ICreateMeeting) {
     // Process checkout data here
     window.alert(JSON.stringify(data));
-    this.createMeetingForm.reset();
+    this.cardsService.SaveMeeting(data).subscribe(it=>{
+      window.alert(JSON.stringify(it));
+      this.createMeetingForm.reset();
+      this.refreshMeetings();
+    })
+    
   }
 }

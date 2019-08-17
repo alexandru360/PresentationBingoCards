@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Meeting} from 'bingo-meeting-objects';
+import {Meeting, ICreateMeeting} from 'bingo-meeting-objects';
 import {CreateMeeting} from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -17,11 +17,11 @@ export class AppComponent {
 
   constructor( private formBuilder: FormBuilder) {
     this.meetings = [];
-    // why this gives an compilation error? ???
-    // const c: CreateMeeting = new CreateMeeting();
-    this.createMeetingForm = this.formBuilder.group({userName: '', meetingName: ''});
+    // why this gives an compilation error if we put new CreateMeeting ? references? 
+    const c: ICreateMeeting = {userName: '', meetingName: ''};
+    this.createMeetingForm = this.formBuilder.group(c);
   }
-  onSubmit(data: any) {
+  onSubmit(data: ICreateMeeting) {
     // Process checkout data here
     window.alert(JSON.stringify(data));
     this.createMeetingForm.reset();

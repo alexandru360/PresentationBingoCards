@@ -1,9 +1,9 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-
-export class CreateMeeting {
+import {ICreateMeeting} from"bingo-meeting-objects";
+export class CreateMeeting implements ICreateMeeting {
   @ApiModelProperty()
-  readonly userName: string;
+  userName: string;
   @ApiModelProperty()
-  readonly meetingName: string;
+  meetingName: string;
 }
 

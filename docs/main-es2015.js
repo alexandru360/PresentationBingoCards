@@ -212,13 +212,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "../node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "../node_modules/@angular/common/fesm2015/common.js");
+
 
 
 
 let CardsService = class CardsService {
-    constructor(httpAPI) {
+    constructor(doc, httpAPI) {
+        this.doc = doc;
         this.httpAPI = httpAPI;
-        this.urlApi = 'http://bingo-meeting-api.herokuapp.com/';
+        this.urlApi = '//bingo-meeting-api.herokuapp.com/';
+        // this.protocol = doc.location.protocol;
     }
     GetMeeting(id) {
         const url = this.urlApi + 'meetings/' + id;
@@ -234,12 +238,14 @@ let CardsService = class CardsService {
     }
 };
 CardsService.ctorParameters = () => [
+    { type: Document, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["DOCUMENT"],] }] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
 ];
 CardsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
         providedIn: 'root'
-    })
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_3__["DOCUMENT"]))
 ], CardsService);
 
 

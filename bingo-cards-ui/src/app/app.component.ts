@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder, private cardsService: CardsService) {
     this.meetings = [];
+    
     // why this gives an compilation error if we put new CreateMeeting ? references?
     const c: ICreateMeeting = {userName: '', meetingName: ''};
     this.createMeetingForm = this.formBuilder.group(c);

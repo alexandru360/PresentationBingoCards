@@ -9,8 +9,8 @@ import { CardsService } from '../cards.service';
   styleUrls: ['./meeting-running.component.css']
 })
 export class MeetingRunningComponent implements OnInit {
-  private actualMeeting: Meeting = null;
-  private id: string;
+  public actualMeeting: Meeting = null;
+  public id: string;
   constructor(
     private route: ActivatedRoute,
     private cardService: CardsService

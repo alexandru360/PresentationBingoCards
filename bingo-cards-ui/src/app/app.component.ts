@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Meeting, ICreateMeeting} from 'bingo-meeting-objects';
-import {CreateMeeting, ActualMeeting} from 'bingo-cards-api-objects';
+import { ICreateMeeting} from 'bingo-meeting-objects';
+import { ActualMeeting} from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CardsService } from './cards.service';
 

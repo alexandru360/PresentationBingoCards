@@ -1,10 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Meeting, ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
-import { inject } from '@angular/core/testing';
-import { DOCUMENT } from '@angular/common';
+// import { inject } from '@angular/core/testing';
+// import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ import { DOCUMENT } from '@angular/common';
 export class CardsService {
 
   private urlApi = '//bingo-meeting-api.herokuapp.com/';
-  private protocol: string;
-  constructor(@Inject(DOCUMENT)private doc: Document, private httpAPI: HttpClient) {
+  // private protocol: string;
+  constructor(/*@Inject(DOCUMENT)private doc: Document, */ private httpAPI: HttpClient) {
     // this.protocol = doc.location.protocol;
   }
   public GetMeeting(id: string): Observable<Meeting> {

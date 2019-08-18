@@ -1,0 +1,6 @@
+FROM node:10
+WORKDIR /app
+COPY . ./
+RUN yarn
+RUN yarn buildWebUI
+CMD tail -f /dev/null

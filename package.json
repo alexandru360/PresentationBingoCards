@@ -12,7 +12,7 @@
       "runConsole": "cd bingo-meeting-console && yarn start",
       "buildConsole":"yarn build && cd bingo-meeting-console && yarn build",
       "buildWebUI": "cd bingo-cards-ui && yarn build:prod",
-      
+      "build:docker" :"cd bingo-cards-ui && yarn build:docker",
       "build":"tsc -b ."
     }
 }

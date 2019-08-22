@@ -1,6 +1,6 @@
 import {Participant} from './Participant';
 import {Cards} from './Cards';
-import { ok, err, Result, Err } from 'neverthrow';
+import { ok, err, Result } from 'neverthrow';
 export class Meeting{
 
     constructor(m?:Meeting){

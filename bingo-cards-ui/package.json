@@ -5,15 +5,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod":"ng build --prod --build-optimizer",
+    "build:prod": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:docker": "ng build --configuration=dockerbuild --build-optimizer"
   },
   "private": true,
   "dependencies": {
-    "bingo-cards-api-objects":"^1.0.0",
-    "bingo-meeting-objects": "^1.0.0",
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
@@ -22,6 +21,11 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "@nest-middlewares/serve-static": "^6.0.0",
+    "@nestjs/serve-static": "^1.0.1",
+    "bingo-cards-api-objects": "^1.0.0",
+    "bingo-meeting-objects": "^1.0.0",
+    "path": "^0.12.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

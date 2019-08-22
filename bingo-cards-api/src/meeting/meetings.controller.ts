@@ -6,7 +6,7 @@ import { ActualMeeting } from 'bingo-cards-api-objects/src/ActualMeeting';
 import { CheckCardParticipant } from 'bingo-cards-api-objects/src/CheckCardParticipant';
 import { AddParticipant } from 'bingo-cards-api-objects/src/AddParticipant';
 
-@Controller('meetings')
+@Controller('api/meetings')
 export class MeetingsController {
     constructor(private meetingsService: MeetingService){}
 

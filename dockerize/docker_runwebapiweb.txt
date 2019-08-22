@@ -1,0 +1,18 @@
+FROM node:10
+WORKDIR /app
+COPY package.json ./package.json
+COPY bingo-cards-api/package.json ./bingo-cards-api/package.json 
+COPY bingo-cards-api-objects/package.json ./bingo-cards-api-objects/package.json 
+COPY bingo-cards-ui/package.json ./bingo-cards-ui/package.json 
+COPY bingo-meeting-console/package.json ./bingo-meeting-console/package.json 
+COPY bingo-meeting-objects/package.json ./bingo-meeting-objects/package.json 
+COPY bingo-meeting-objects-test/package.json ./bingo-meeting-objects-test/package.json 
+
+RUN yarn install 
+
+COPY . ./
+RUN yarn build
+RUN yarn build:docker
+RUN cp -r ./bingo-cards-ui/dist/ ./bingo-cards-api/
+CMD ["yarn","api"]
+EXPOSE 3000

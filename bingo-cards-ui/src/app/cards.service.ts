@@ -16,20 +16,24 @@ export class CardsService {
   // private protocol: string;
   constructor(/*@Inject(DOCUMENT)private doc: Document, */ private httpAPI: HttpClient) {
     // this.protocol = doc.location.protocol;
-    this.urlApi= environment.urlApi;
+    this.urlApi = environment.urlApi;
   }
   public GetMeeting(id: string): Observable<Meeting> {
 
     const url: string = this.urlApi + 'meetings/' + id;
     return this.httpAPI.get<Meeting>(url);
-}
+  }
   public GetMeetings(): Observable<ActualMeeting[]> {
 
-      const url: string = this.urlApi + 'meetings';
-      return this.httpAPI.get<ActualMeeting[]>(url);
+    const url: string = this.urlApi + 'meetings';
+    return this.httpAPI.get<ActualMeeting[]>(url);
   }
   public SaveMeeting(create: ICreateMeeting): Observable<Meeting> {
     const url: string = this.urlApi + 'meetings';
     return this.httpAPI.post<Meeting>(url, create);
   }
+  // public SaveCards(Cards: Array<Cards>, id: number) {
+  //   const url: string = this.urlApi + 'meetings' + id + '/checkCard';
+  //   return this.httpAPI.post<Meeting>(url, create);
+  // }
 }

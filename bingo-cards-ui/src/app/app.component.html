@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
+    <h1>Welcome to {{ title }}!</h1>
 </div>
 
 <h2>Create a new bingo meeting</h2>
@@ -11,33 +11,34 @@
           User Name
         </label>
         <input id="userName" type="text" formControlName="userName">
-      </div>
-    
-      <div>
+    </div>
+
+    <div>
         <label for="meetingName">
             Meeting Name
         </label>
         <input id="meetingName" type="text" formControlName="meetingName">
-      </div>
-    
-  
-  <button class="button" type="submit">Create meeting</button>
+    </div>
+
+
+    <button mat-raised-button type="submit">Create meeting</button>
+
 
 </form>
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
 
-<ul >
-  <li *ngFor="let m of meetings">
-    <h2>
-      <a [title]="m.meetingName +' details'"  rel="noopener" [routerLink]="['/meetings', m.idMeeting]">
+<ul>
+    <li *ngFor="let m of meetings">
+        <h2>
+            <a [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]">
         {{m.meetingName}}  created by {{m.participantName}} </a>
-    </h2>
-  </li>
+        </h2>
+    </li>
 </ul>
 
 <router-outlet></router-outlet>
 <p>
-Made by Andrei Ignat & Alexandru Badita
+    Made by Andrei Ignat & Alexandru Badita
 </p>
 
 Github project at : https://github.com/alexandru360/PresentationBingoCards/

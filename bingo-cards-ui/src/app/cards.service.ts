@@ -1,9 +1,11 @@
+import { Cards } from 'bingo-meeting-objects/Cards';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Meeting, ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { environment } from './../environments/environment';
+
 // import { inject } from '@angular/core/testing';
 // import { DOCUMENT } from '@angular/common';
 
@@ -32,8 +34,8 @@ export class CardsService {
     const url: string = this.urlApi + 'meetings';
     return this.httpAPI.post<Meeting>(url, create);
   }
-  // public SaveCards(Cards: Array<Cards>, id: number) {
-  //   const url: string = this.urlApi + 'meetings' + id + '/checkCard';
-  //   return this.httpAPI.post<Meeting>(url, create);
-  // }
+  public SaveCards(id: string, create: Cards): Observable<Meeting> {
+    const url: string = this.urlApi + 'meetings' + id + '/checkCard';
+    return this.httpAPI.post<Meeting>(url, create);
+  }
 }

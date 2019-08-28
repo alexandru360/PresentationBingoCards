@@ -4,21 +4,6 @@
 </div>
 
 <h2>Create a new bingo meeting</h2>
-
-<!-- <form [formGroup]="createMeetingForm" (ngSubmit)="onSubmit(createMeetingForm.value)">
-    <div>
-        <label for="userName">
-          User Name
-        </label>
-        <input id="userName" type="text" formControlName="userName">
-    </div>
-
-    <div>
-        <label for="meetingName">
-            Meeting Name
-        </label>
-        <input id="meetingName" type="text" formControlName="meetingName">
-    </div> -->
 <!-- mat input form -->
 <form [formGroup]="createMeetingForm" (ngSubmit)="onSubmit(createMeetingForm.value)">
     <mat-form-field class="example-full-width">
@@ -30,12 +15,9 @@
         <input matInput placeholder="Meeting Name" formControlName="meetingName">
     </mat-form-field>
     <br/>
-    <!-- mat input form END -->
-
     <button mat-raised-button type="submit">Create meeting</button>
-
 </form>
-
+<!-- mat input form END -->
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
 
 <ul>

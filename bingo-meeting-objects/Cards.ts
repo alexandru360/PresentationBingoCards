@@ -4,7 +4,7 @@ export class Cards {
     constructor() {
         this.checkedByUser= [];
     }
-    Id: Number;
+    Id: number;
     Name: string;
     Description: string;
     checkedByUser: Array<Participant>;

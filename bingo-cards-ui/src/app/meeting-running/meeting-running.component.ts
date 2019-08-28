@@ -31,17 +31,25 @@ export class MeetingRunningComponent implements OnInit {
       });
     });
   }
-  selectionChange(option: MatOption) {
-    // console.log(option.selected);
-    // console.log(option.value);
-    if (option.value && option.selected) {
+  getName(name) {
+    if (this.selected === true) {
+      this.Cards.push(name);
+    }
+    console.log(this.Cards.toString());
+  }
+  saveCards(i) {
+    console.log(i);
+  }
+
+  selectionChange(option: MatOption, i) {
+    if (option.selected === true) {
+      console.log('a fost selectat' + option.value);
       this.Id = option.value;
       this.Cards.push(option.value);
-      let i;
-      for (i = 0; i < this.Cards.length; i++) {
-        console.log(this.Cards[i]);
-      }
-    }
+    } else {
+      this.Cards.splice(this.Cards.indexOf(option.value), 1);
+      console.log('a fost deselectat' + option.value);
+  }
 
   }
 }

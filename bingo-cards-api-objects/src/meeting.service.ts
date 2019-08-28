@@ -57,7 +57,7 @@ export class MeetingService {
     //     return cards;
     // }
     private meetings: Array<Meeting> ;
-    // private cards: Array<Cards> ;
+    private cards: Array<Cards> ;
 
     async  create(userName: string, meetingName: string): Promise<Meeting> {
         const m = new MeetingsFactory().CreateMeeting(userName, meetingName);

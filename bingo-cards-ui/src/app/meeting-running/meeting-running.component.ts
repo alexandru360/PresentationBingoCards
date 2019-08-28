@@ -17,6 +17,8 @@ export class MeetingRunningComponent implements OnInit {
   @Input() value: any;
   Cards: Array<Cards> = [];
   Id: Cards['Id'];
+  arrKeyTxtVal = [];
+
   constructor(
     private route: ActivatedRoute,
     private cardService: CardsService
@@ -31,24 +33,29 @@ export class MeetingRunningComponent implements OnInit {
       });
     });
   }
-  getName(name) {
-    if (this.selected === true) {
-      this.Cards.push(name);
-    }
-    console.log(this.Cards.toString());
-  }
-  saveCards(i) {
+  // getName(name) {
+  //   if (this.selected === true) {
+  //     this.Cards.push(name);
+  //   }
+  //   // console.log(this.Cards.toString());
+  // }
+  saveCards(i: Array<any>) {
+
     console.log(i);
+    for(let el of i){
+      this.arrKeyTxtVal.push({value: this.actualMeeting.Cards[el].Name});
+    }
+    console.log(this.arrKeyTxtVal);
   }
 
   selectionChange(option: MatOption, i) {
     if (option.selected === true) {
-      console.log('a fost selectat' + option.value);
+      console.log('a fost selectat: ' + option.value);
       this.Id = option.value;
       this.Cards.push(option.value);
     } else {
       this.Cards.splice(this.Cards.indexOf(option.value), 1);
-      console.log('a fost deselectat' + option.value);
+      console.log('a fost deselectat: ' + option.value);
   }
 
   }

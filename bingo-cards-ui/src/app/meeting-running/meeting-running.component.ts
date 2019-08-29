@@ -59,13 +59,7 @@ export class MeetingRunningComponent implements OnInit {
     console.log(this.arrKeyTxtVal);
   }
 
-  // saveCards(i: Array<any>): Observable<any> {
-  //   for (const el of i) {
-  //     const txtVal = { value: this.actualMeeting.Cards[el].Name };
-  //     this.Cards$.pipe(map(this.arrKeyTxtVal$ => {txtVal}))
-  //   }
-    
-  // }
+
 
 
   selectionChange(option: MatOption, i) {

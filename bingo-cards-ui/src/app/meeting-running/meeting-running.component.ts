@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Meeting } from 'bingo-meeting-objects';
 import { CardsService } from '../cards.service';
 import { MatOption } from '@angular/material/core';
+// import { from, Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-meeting-running',
@@ -19,10 +21,15 @@ export class MeetingRunningComponent implements OnInit {
   Id: Cards['Id'];
   arrKeyTxtVal = [];
 
+  // Cards$: Observable<any[]> = from(Cards);
+  // arrKeyTxtVal$: Observable<any[]>;
+
   constructor(
     private route: ActivatedRoute,
     private cardService: CardsService
-  ) {}
+  ) { }
+
+
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -39,24 +46,37 @@ export class MeetingRunningComponent implements OnInit {
   //   }
   //   // console.log(this.Cards.toString());
   // }
-  saveCards(i: Array<any>) {
 
+
+  saveCards(i: Array<any>) {
+    this.arrKeyTxtVal = [];
     console.log(i);
-    for(let el of i){
-      this.arrKeyTxtVal.push({value: this.actualMeeting.Cards[el].Name});
+
+    for (const el of i) {
+      const txtVal = { value: this.actualMeeting.Cards[el].Name };
+      this.arrKeyTxtVal.push(txtVal);
     }
     console.log(this.arrKeyTxtVal);
   }
 
+  // saveCards(i: Array<any>): Observable<any> {
+  //   for (const el of i) {
+  //     const txtVal = { value: this.actualMeeting.Cards[el].Name };
+  //     this.Cards$.pipe(map(this.arrKeyTxtVal$ => {txtVal}))
+  //   }
+    
+  // }
+
+
   selectionChange(option: MatOption, i) {
     if (option.selected === true) {
-      console.log('a fost selectat: ' + option.value);
+      // console.log('a fost selectat: ' + option.value);
       this.Id = option.value;
       this.Cards.push(option.value);
     } else {
       this.Cards.splice(this.Cards.indexOf(option.value), 1);
-      console.log('a fost deselectat: ' + option.value);
-  }
+      // console.log('a fost deselectat: ' + option.value);
+    }
 
   }
 }

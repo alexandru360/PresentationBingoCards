@@ -52,12 +52,9 @@ export class MeetingService {
         return m;
 
     }
-    // public postCard(idMeeting: any, cards: Array<Cards>) {
-    //     const m = this.meetings.find(it => it.Id === idMeeting );
-    //     return cards;
-    // }
+   
     private meetings: Array<Meeting> ;
-    private cards: Array<Cards> ;
+    public cards: Array<Cards> ;
 
     async  create(userName: string, meetingName: string): Promise<Meeting> {
         const m = new MeetingsFactory().CreateMeeting(userName, meetingName);

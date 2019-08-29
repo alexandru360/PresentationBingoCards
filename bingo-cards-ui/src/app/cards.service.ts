@@ -34,8 +34,8 @@ export class CardsService {
     const url: string = this.urlApi + 'meetings';
     return this.httpAPI.post<Meeting>(url, create);
   }
-  public SaveCards(id: string, create: Cards): Observable<Meeting> {
-    const url: string = this.urlApi + 'meetings' + id + '/checkCard';
-    return this.httpAPI.post<Meeting>(url, create);
+  public SaveCards(id: string, create: Cards[]): Observable<Meeting> {
+    const url: string = this.urlApi + 'meetings/' + id + '/checkCard';
+    return this.httpAPI.put<Meeting>(url, create);
   }
 }

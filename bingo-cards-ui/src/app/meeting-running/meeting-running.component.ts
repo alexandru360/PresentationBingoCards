@@ -53,10 +53,11 @@ export class MeetingRunningComponent implements OnInit {
     console.log(i);
 
     for (const el of i) {
-      const txtVal = { value: this.actualMeeting.Cards[el].Name };
+      const txtVal = { value: this.actualMeeting.Cards[el].Id };
       this.arrKeyTxtVal.push(txtVal);
     }
     console.log(this.arrKeyTxtVal);
+    this.cardService.SaveCards(this.id, this.Cards).subscribe(data => console.log(data));
   }
 
 

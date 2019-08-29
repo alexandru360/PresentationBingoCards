@@ -21,8 +21,7 @@ export class MeetingRunningComponent implements OnInit {
   Id: Cards['Id'];
   arrKeyTxtVal = [];
 
-  // Cards$: Observable<any[]> = from(Cards);
-  // arrKeyTxtVal$: Observable<any[]>;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -53,11 +52,16 @@ export class MeetingRunningComponent implements OnInit {
     console.log(i);
 
     for (const el of i) {
-      const txtVal = { value: this.actualMeeting.Cards[el].Id };
+      const txtVal = {
+        userName: this.actualMeeting.Cards[el].Name,
+        cardId: this.actualMeeting.Cards[el].Id
+      };
       this.arrKeyTxtVal.push(txtVal);
     }
     console.log(this.arrKeyTxtVal);
-    this.cardService.SaveCards(this.id, this.Cards).subscribe(data => console.log(data));
+    for (const card of this.arrKeyTxtVal) {
+      this.cardService.SaveCards(this.id, card).subscribe(data => console.log(data));
+    }
   }
 
 

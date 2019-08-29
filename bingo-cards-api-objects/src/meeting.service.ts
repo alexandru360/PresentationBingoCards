@@ -18,6 +18,7 @@ export class MeetingService {
     constructor(){
         this.meetings = [];
         this.cards = [];
+        
     }
     public ActualMeetings(): ActualMeeting []{
 

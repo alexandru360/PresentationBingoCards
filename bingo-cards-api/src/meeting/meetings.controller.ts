@@ -1,3 +1,4 @@
+import { Cards } from './../../../bingo-meeting-objects/Cards';
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
 import { MeetingService } from 'bingo-cards-api-objects/src/meeting.service';
 import { Meeting, Participant } from 'bingo-meeting-objects';
@@ -5,6 +6,7 @@ import {CreateMeeting } from 'bingo-cards-api-objects/src/CreateMeeting';
 import { ActualMeeting } from 'bingo-cards-api-objects/src/ActualMeeting';
 import { CheckCardParticipant } from 'bingo-cards-api-objects/src/CheckCardParticipant';
 import { AddParticipant } from 'bingo-cards-api-objects/src/AddParticipant';
+// import { postCard } from 'bingo-cards-api-objects/src/postCard';
 
 @Controller('api/meetings')
 export class MeetingsController {
@@ -34,5 +36,10 @@ export class MeetingsController {
         // console.log(`userName : ${JSON.stringify(cm.userName)}  meetingName: ${JSON.stringify(cm.meetingName)}`);
         return this.meetingsService.checkCard(id, CP.cardId, CP.userName);
     }
+    // @Post(':id/checkCard')
+    // async postCard(@Param('id') id: any, @Body() PC: postCard): Promise<Meeting> {
+    //   // console.log(`userName : ${JSON.stringify(cm.userName)}  meetingName: ${JSON.stringify(cm.meetingName)}`);
+    //   return this.meetingsService.postCard();
+    // }
 
 }

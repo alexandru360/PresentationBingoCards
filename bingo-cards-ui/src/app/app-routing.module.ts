@@ -6,7 +6,7 @@ import { MeetingRunningComponent } from './meeting-running/meeting-running.compo
 
 const routes: Routes = [
 
-    
+
     {path: 'meetings/:id', component: MeetingRunningComponent}
 
 

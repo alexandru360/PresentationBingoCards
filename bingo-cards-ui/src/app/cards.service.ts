@@ -1,4 +1,3 @@
-import { Cards } from 'bingo-meeting-objects/Cards';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';

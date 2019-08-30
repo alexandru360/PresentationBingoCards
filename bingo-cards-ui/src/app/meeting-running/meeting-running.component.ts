@@ -67,7 +67,7 @@ export class MeetingRunningComponent implements OnInit {
 
 
 
-  selectionChange(option: MatOption, i) {
+  selectionChange(option: MatOption) {
     if (option.selected === true) {
       // console.log('a fost selectat: ' + option.value);
       this.Id = option.value;

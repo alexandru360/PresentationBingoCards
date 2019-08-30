@@ -69,12 +69,12 @@ export class MeetingRunningComponent implements OnInit {
 
   selectionChange(option: MatOption, i) {
     if (option.selected === true) {
-      // console.log('a fost selectat: ' + option.value);
+      // console.log('it was selected: ' + option.value);
       this.Id = option.value;
       this.Cards.push(option.value);
     } else {
       this.Cards.splice(this.Cards.indexOf(option.value), 1);
-      // console.log('a fost deselectat: ' + option.value);
+      // console.log('it was selected: ' + option.value);
     }
 
   }

@@ -8,3 +8,9 @@ It uses the bingo-cards-api project deployed at http://bingo-meeting-api.herokua
 To run , go up one folder and run yarn ui
 
 If you want to run in Docker, goto Dockerize folder and run build_RunWebApiWeb.bat ( it shows also the WebAPI)
+
+Code documentation at
+
+https://alexandru360.github.io/PresentationBingoCards/source/bingo-cards-ui
+
+Project available at https://github.com/alexandru360/PresentationBingoCards/

@@ -16,3 +16,6 @@ chmod +777 <bat file>.bat
 and then
 .<bat file>.bat
 
+
+
+Project available at https://github.com/alexandru360/PresentationBingoCards/

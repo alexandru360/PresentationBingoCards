@@ -1,3 +1,5 @@
+#typedoc output
+dockerize/source
 #test
 dockerize/jest-stare
 Src/jest-stare

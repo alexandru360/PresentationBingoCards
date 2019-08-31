@@ -9,7 +9,7 @@ describe("Meetings creation", () => {
         const mf: MeetingsFactory=new MeetingsFactory();
         const m1: Meeting=mf.CreateMeeting("andrei","first meeting");
 
-        expect(m1.Name).toBe("first ameeting");
+        expect(m1.Name).toBe("first meeting");
         expect(m1.Participants.length).toBe(1);
         expect(m1.Participants[0].Name).toBe("andrei");
         expect(m1.Percentage().isOk()).toBe(true);

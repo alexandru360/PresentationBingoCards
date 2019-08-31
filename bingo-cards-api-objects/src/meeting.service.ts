@@ -1,4 +1,4 @@
-import { Cards } from 'bingo-meeting-objects/Cards';
+
 import { Injectable } from '@nestjs/common';
 import { Meeting, MeetingsFactory, Participant } from 'bingo-meeting-objects';
 import { ActualMeeting } from './ActualMeeting';
@@ -17,7 +17,7 @@ export class MeetingService {
     // }
     constructor(){
         this.meetings = [];
-        this.cards = [];
+        
         
     }
     public ActualMeetings(): ActualMeeting []{
@@ -55,7 +55,7 @@ export class MeetingService {
     }
    
     private meetings: Array<Meeting> ;
-    public cards: Array<Cards> ;
+   
 
     async  create(userName: string, meetingName: string): Promise<Meeting> {
         const m = new MeetingsFactory().CreateMeeting(userName, meetingName);

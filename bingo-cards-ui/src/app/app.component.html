@@ -12,7 +12,7 @@
     <br />
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Meeting Name" formControlName="meetingName" required>
+        <input matInput placeholder="Meeting Name" formControlName="meetingName" [value]="mName" required>
     </mat-form-field>
     <br />
     <button mat-raised-button type="submit" [disabled]="!createMeetingForm.valid">Create
@@ -23,7 +23,7 @@
 
 <mat-list role="list" *ngFor="let m of meetings">
     <mat-divider></mat-divider>
-    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" mat-raised-button>Join meeting</button>
+    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" mat-raised-button>Join meeting</button>
     <mat-divider></mat-divider>
 </mat-list>
 

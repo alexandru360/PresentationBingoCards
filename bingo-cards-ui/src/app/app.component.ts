@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ICreateMeeting} from 'bingo-meeting-objects';
-import { ActualMeeting} from 'bingo-cards-api-objects';
+import { ICreateMeeting } from 'bingo-meeting-objects';
+import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { CardsService } from './cards.service';
+// import { Meeting } from 'bingo-meeting-objects';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,26 @@ export class AppComponent implements OnInit {
 
 
   title = 'Bingo Meetings';
-  meetings: ActualMeeting[];
+  meetings: ActualMeeting[] = [];
   createMeetingForm: FormGroup;
   ngForm: FormGroupDirective;
+  mName: string = '';
 
-
-  constructor( private formBuilder: FormBuilder, private cardsService: CardsService) {
+  constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
     this.meetings = [];
 
     // why this gives an compilation error if we put new CreateMeeting ? references?
-    const c: ICreateMeeting = {userName: '', meetingName: ''};
+    const c: ICreateMeeting = { userName: '', meetingName: '' };
     this.createMeetingForm = this.formBuilder.group(c, Validators.required);
+  }
+  getMeetingValue(id) {
+    console.log(this.meetings);
+    this.mName = id;
   }
 
   ngOnInit(): void {
     this.refreshMeetings();
-      }
+  }
   refreshMeetings(): void {
     this.cardsService.GetMeetings().subscribe(it => this.meetings = it);
   }

@@ -1,4 +1,16 @@
- .mat-list-base {
-  width: 40%;
+.mat-list-item {
+    display: flexbox;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
+.mat-list-base {
+    display: flex;
+    width: 70%;
+}
+
+
+/* #join {
+    padding: 0 auto;
+} */

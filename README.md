@@ -21,5 +21,5 @@ http://bingo-meeting-api.herokuapp.com/api
 ## Blog link:
 http://msprogrammer.serviciipeweb.ro/category/bingo/
 
-## Project documentation link 
+## Project documentation link ( for programmers) 
 See project documentation at https://github.com/alexandru360/PresentationBingoCards/wiki

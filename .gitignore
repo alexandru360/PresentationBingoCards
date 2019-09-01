@@ -1,5 +1,6 @@
 #typedoc output
 dockerize/source
+
 #test
 dockerize/jest-stare
 Src/jest-stare
@@ -13,7 +14,10 @@ yarn-debug.log*
 yarn-error.log*
 
 #compile ts
-dist
+bingo-meeting-console/dist
+bingo-meeting-objects/dist
+dockerize/dist
+
 
 # Runtime data
 pids

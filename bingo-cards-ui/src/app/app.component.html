@@ -5,29 +5,27 @@
 
 <h2>Create a new bingo meeting</h2>
 <!-- mat input form -->
-<form [formGroup]="createMeetingForm" (ngSubmit)="onSubmit(createMeetingForm.value)">
+<form [formGroup]="createMeetingForm" #formDirective="ngForm" (ngSubmit)="onSubmit(createMeetingForm.value, formDirective)">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="User Name" formControlName="userName">
+        <input matInput placeholder="User Name" formControlName="userName" required>
     </mat-form-field>
-    <br/>
+    <br />
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Meeting Name" formControlName="meetingName">
+        <input matInput placeholder="Meeting Name" formControlName="meetingName" [value]="mName" required>
     </mat-form-field>
-    <br/>
-    <button mat-raised-button type="submit">Create meeting</button>
+    <br />
+    <button mat-raised-button type="submit" [disabled]="!createMeetingForm.valid">Create
+    meeting</button>
 </form>
 <!-- mat input form END -->
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
 
-<ul>
-    <li *ngFor="let m of meetings">
-        <h2>
-            <a [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]">
-        {{m.meetingName}}  created by {{m.participantName}} </a>
-        </h2>
-    </li>
-</ul>
+<mat-list role="list" *ngFor="let m of meetings">
+    <mat-divider></mat-divider>
+    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" mat-raised-button>Join meeting</button>
+    <mat-divider></mat-divider>
+</mat-list>
 
 <router-outlet></router-outlet>
 <p>

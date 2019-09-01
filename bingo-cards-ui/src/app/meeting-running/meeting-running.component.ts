@@ -13,7 +13,7 @@ import { MatOption } from '@angular/material/core';
   styleUrls: ['./meeting-running.component.css']
 })
 export class MeetingRunningComponent implements OnInit {
-  public actualMeeting: Meeting = null;
+  public actualMeeting;
   public id: string;
   @Input() selected: boolean;
   @Input() value: any;
@@ -47,11 +47,11 @@ export class MeetingRunningComponent implements OnInit {
   // }
 
 
-  saveCards(i: Array<any>) {
+  saveCards(cards: Array<any>) {
     this.arrKeyTxtVal = [];
-    console.log(i);
+    console.log(cards);
 
-    for (const el of i) {
+    for (const el of cards) {
       const txtVal = {
         userName: this.actualMeeting.Cards[el].Name,
         cardId: this.actualMeeting.Cards[el].Id
@@ -60,7 +60,7 @@ export class MeetingRunningComponent implements OnInit {
     }
     console.log(this.arrKeyTxtVal);
     for (const card of this.arrKeyTxtVal) {
-      this.cardService.SaveCards(this.id, card).subscribe(data => console.log(data));
+      this.cardService.CreateCards(this.id, card).subscribe(data => console.log(data));
     }
   }
 
@@ -69,12 +69,12 @@ export class MeetingRunningComponent implements OnInit {
 
   selectionChange(option: MatOption) {
     if (option.selected === true) {
-      // console.log('a fost selectat: ' + option.value);
+      // console.log('it was selected: ' + option.value);
       this.Id = option.value;
       this.Cards.push(option.value);
     } else {
       this.Cards.splice(this.Cards.indexOf(option.value), 1);
-      // console.log('a fost deselectat: ' + option.value);
+      // console.log('it was selected: ' + option.value);
     }
 
   }

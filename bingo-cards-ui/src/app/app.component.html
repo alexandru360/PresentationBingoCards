@@ -23,7 +23,7 @@
 
 <mat-list role="list" *ngFor="let m of meetings">
     <mat-divider></mat-divider>
-    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" mat-raised-button>Join meeting</button>
+    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" (click)="addParticipant(m.idMeeting) " mat-raised-button>Join meeting</button>
     <mat-divider></mat-divider>
 </mat-list>
 

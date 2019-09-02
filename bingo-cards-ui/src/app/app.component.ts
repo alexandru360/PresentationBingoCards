@@ -19,6 +19,9 @@ export class AppComponent implements OnInit {
   createMeetingForm: FormGroup;
   ngForm: FormGroupDirective;
   mName: string = '';
+  meetingId: any;
+  nameParticipant: string;
+
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
     this.meetings = [];
@@ -27,11 +30,23 @@ export class AppComponent implements OnInit {
     const c: ICreateMeeting = { userName: '', meetingName: '' };
     this.createMeetingForm = this.formBuilder.group(c, Validators.required);
   }
+  // _nameParticipant = this.createMeetingForm.get('userName').value;
+  get _nameParticipant(): any {
+    return this.createMeetingForm.get('userName').value;
+  }
   getMeetingValue(id) {
     console.log(this.meetings);
     this.mName = id;
   }
+  addParticipant(idMeeting: string) {
+    console.log(idMeeting);
+    const participant = {
+      meetingId: idMeeting,
+      nameParticipant: this._nameParticipant
+    };
 
+    this.cardsService.addParticipant(participant).subscribe(data => console.log(data));
+  }
   ngOnInit(): void {
     this.refreshMeetings();
   }

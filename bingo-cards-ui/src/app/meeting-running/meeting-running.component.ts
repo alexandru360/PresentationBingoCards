@@ -17,10 +17,11 @@ export class MeetingRunningComponent implements OnInit {
   public id: string;
   @Input() selected: boolean;
   @Input() value: any;
-  Cards: Array<Cards> = [];
+  Cards: Array<number> = [];
   Id: Cards['Id'];
   arrKeyTxtVal = [];
-
+  userName: string = '';
+  cardId: string = '';
 
 
   constructor(
@@ -47,7 +48,7 @@ export class MeetingRunningComponent implements OnInit {
   // }
 
 
-  saveCards(cards: Array<any>) {
+  saveCards(cards: Array<number>) {
     this.arrKeyTxtVal = [];
     console.log(cards);
 
@@ -55,12 +56,12 @@ export class MeetingRunningComponent implements OnInit {
       const txtVal = {
         userName: this.actualMeeting.Cards[el].Name,
         cardId: this.actualMeeting.Cards[el].Id
-      };
+    };
       this.arrKeyTxtVal.push(txtVal);
     }
     console.log(this.arrKeyTxtVal);
     for (const card of this.arrKeyTxtVal) {
-      this.cardService.CreateCards(this.id, card).subscribe(data => console.log(data));
+      this.cardService.checkCard(this.id, card).subscribe(data => console.log(data));
     }
   }
 

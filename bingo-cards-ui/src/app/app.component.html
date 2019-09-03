@@ -20,13 +20,20 @@
 </form>
 <!-- mat input form END -->
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
-
-<mat-list role="list" *ngFor="let m of meetings">
-    <mat-divider></mat-divider>
-    <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" (click)="addParticipant(m.idMeeting) " mat-raised-button>Join meeting</button>
-    <mat-divider></mat-divider>
-</mat-list>
-
+<div class="meetings" *ngIf="_show">
+    <mat-list role="list" *ngFor="let m of meetings">
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem" [title]="m.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName) ; show(m)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" (click)="addParticipant(m.idMeeting)" mat-raised-button>Join meeting</button>
+        <mat-divider></mat-divider>
+    </mat-list>
+</div>
+<div class="meetings" *ngIf="meetingShow">
+    <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item role="listitem" [title]="meetingShow.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', meetingShow.idMeeting]" (click)="getMeetingValue(meetingShow.meetingName)">{{meetingShow.meetingName}} created by {{meetingShow.participantName}}</mat-list-item><button id="join" (click)="addParticipant(meetingShow.idMeeting)" mat-raised-button>Join meeting</button>
+        <mat-divider></mat-divider>
+    </mat-list>
+</div>
 <router-outlet></router-outlet>
 <p>
     Made by Andrei Ignat & Alexandru Badita

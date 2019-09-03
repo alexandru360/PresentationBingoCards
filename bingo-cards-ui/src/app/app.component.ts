@@ -21,6 +21,8 @@ export class AppComponent implements OnInit {
   mName: string = '';
   meetingId: any;
   nameParticipant: string;
+  _show: boolean = true;
+  meetingShow: any;
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
@@ -37,6 +39,11 @@ export class AppComponent implements OnInit {
   getMeetingValue(id) {
     console.log(this.meetings);
     this.mName = id;
+  }
+  show(m) {
+    console.log(m);
+    this.meetingShow = m;
+    this._show = false;
   }
   addParticipant(idMeeting: string) {
     console.log(idMeeting);

@@ -1,16 +1,26 @@
-.mat-list-item {
-    display: flexbox;
+/* .mat-list-item {
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-}
+} */
 
 .mat-list-base {
     display: flex;
     width: 70%;
 }
 
+.meetings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 25px !important;
+}
 
-/* #join {
-    padding: 0 auto;
-} */
+#join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

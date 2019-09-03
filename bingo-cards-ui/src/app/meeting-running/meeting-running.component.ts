@@ -50,7 +50,7 @@ export class MeetingRunningComponent implements OnInit {
 
   saveCards(cards: Array<number>) {
     this.arrKeyTxtVal = [];
-    console.log(cards);
+    // console.log(cards);
 
     for (const el of cards) {
       const txtVal = {

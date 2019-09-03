@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Meeting } from 'bingo-meeting-objects';
 import { CardsService } from '../cards.service';
 import { MatOption } from '@angular/material/core';
-// import { from, Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 @Component({
@@ -59,10 +59,13 @@ export class MeetingRunningComponent implements OnInit {
     };
       this.arrKeyTxtVal.push(txtVal);
     }
-    console.log(this.arrKeyTxtVal);
+    // console.log(this.arrKeyTxtVal);
     for (const card of this.arrKeyTxtVal) {
-      this.cardService.checkCard(this.id, card).subscribe(data => console.log(data));
-    }
+      this.cardService.checkCard(this.id, card).subscribe(
+        // data => console.log('success message: ' + data),
+        // err => console.log('HTTP Error: ' + err)
+        ); }
+
   }
 
 

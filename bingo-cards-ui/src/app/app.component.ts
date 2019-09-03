@@ -3,6 +3,7 @@ import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { CardsService } from './cards.service';
+// import { Subscription } from 'rxjs';
 // import { Meeting } from 'bingo-meeting-objects';
 
 @Component({
@@ -23,6 +24,9 @@ export class AppComponent implements OnInit {
   nameParticipant: string;
   _show: boolean = true;
   meetingShow: any;
+  message: any[] = [];
+  errMessage: any[] = [];
+  // subscription: Subscription;
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
@@ -52,8 +56,15 @@ export class AppComponent implements OnInit {
       nameParticipant: this._nameParticipant
     };
 
-    this.cardsService.addParticipant(participant).subscribe(data => console.log(data));
+    this.cardsService.addParticipant(participant).subscribe(
+      data => { if (data) { this.message.push(data) } else { this.message = [] } },
+      err => { if (err) { this.errMessage.push(err) } else { this.errMessage = [] } }
+
+    );
   }
+  // console.log('successfully added the new participant: ' + JSON.stringify(data)),
+  // err => console.log('error message :' + JSON.stringify(err))
+
   ngOnInit(): void {
     this.refreshMeetings();
   }

@@ -34,6 +34,10 @@
         <mat-divider></mat-divider>
     </mat-list>
 </div>
+<div>
+    <div *ngFor="let msg of message">A new user has been added successfully: {{msg.Name | json}}</div>
+    <div *ngFor="let err of errMessage">Error: {{err.status | json}} -> {{err.statusText | json}}</div>
+</div>
 <router-outlet></router-outlet>
 <p>
     Made by Andrei Ignat & Alexandru Badita

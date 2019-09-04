@@ -7,7 +7,7 @@
 <!-- mat input form -->
 <form [formGroup]="createMeetingForm" #formDirective="ngForm" (ngSubmit)="onSubmit(createMeetingForm.value, formDirective)">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="User Name" formControlName="userName" required>
+        <input matInput placeholder="User Name" formControlName="userName" [value]="_nameParticipant" required>
     </mat-form-field>
     <br />
 
@@ -30,12 +30,12 @@
 <div class="meetings" *ngIf="meetingShow">
     <mat-list>
         <mat-divider></mat-divider>
-        <mat-list-item role="listitem" [title]="meetingShow.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', meetingShow.idMeeting]" (click)="getMeetingValue(meetingShow.meetingName)">{{meetingShow.meetingName}} created by {{meetingShow.participantName}}</mat-list-item><button id="join" (click)="addParticipant(meetingShow.idMeeting)" mat-raised-button>Join meeting</button>
+        <mat-list-item role="listitem" [title]="meetingShow.meetingName +' details'" rel="noopener" [routerLink]="['/meetings', meetingShow.idMeeting]" (click)="getMeetingValue(meetingShow.meetingName)">{{meetingShow.meetingName}} created by {{meetingShow.participantName}}</mat-list-item><button id="join" (click)="addParticipant(meetingShow.idMeeting)" mat-raised-button [disabled]="!_nameParticipant">Join meeting</button>
         <mat-divider></mat-divider>
     </mat-list>
 </div>
 <div>
-    <div *ngFor="let msg of message">A new user has been added successfully: {{msg.Name | json}}</div>
+    <div *ngIf="message.length > 0">User : {{message[message.length - 1].Name}} has been added successfully</div>
     <div *ngFor="let err of errMessage">Error: {{err.status | json}} -> {{err.statusText | json}}</div>
 </div>
 <router-outlet></router-outlet>

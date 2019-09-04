@@ -1,3 +1,4 @@
+// import { join } from 'path';
 import { Component, OnInit } from '@angular/core';
 import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
@@ -26,7 +27,9 @@ export class AppComponent implements OnInit {
   meetingShow: any;
   message: any[] = [];
   errMessage: any[] = [];
-  // subscription: Subscription;
+  participants: any[] = [];
+  msgUsr: string;
+
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
@@ -41,29 +44,49 @@ export class AppComponent implements OnInit {
     return this.createMeetingForm.get('userName').value;
   }
   getMeetingValue(id) {
-    console.log(this.meetings);
+    // console.log(this.meetings);
     this.mName = id;
   }
   show(m) {
-    console.log(m);
+    // console.log(m);
     this.meetingShow = m;
     this._show = false;
   }
   addParticipant(idMeeting: string) {
-    console.log(idMeeting);
-    const participant = {
-      meetingId: idMeeting,
-      nameParticipant: this._nameParticipant
-    };
+    // console.log(idMeeting);
 
-    this.cardsService.addParticipant(participant).subscribe(
-      data => { if (data) { this.message.push(data) } else { this.message = [] } },
-      err => { if (err) { this.errMessage.push(err) } else { this.errMessage = [] } }
+    if (this._nameParticipant === '') { this.errMessage.push({ statusText: "Username can't be null" }) } else {
+      const participant = {
+        meetingId: idMeeting,
+        nameParticipant: this._nameParticipant
+      };
 
-    );
+      this.cardsService.addParticipant(participant).subscribe(
+        data => {
+          if (data) {
+          this.message = data.Participants;
+            console.log(data.Participants);
+          } else { this.message = [] }
+        },
+        err => { if (err) { this.errMessage.push(err) } else { this.errMessage = [] } }
+        // console.log('successfully added the new participant: ' + JSON.stringify(data)),
+        // err => console.log('error message :' + JSON.stringify(err))
+
+      );
+
+    }
+    // this.message.forEach((element, i) => {
+    //   console.log(element);
+    // });
+    // this.participants.forEach(el) {
+    //   console.log(el);
+    // }
+    // this.participants.forEach(this.iterateInMessage);
+
   }
-  // console.log('successfully added the new participant: ' + JSON.stringify(data)),
-  // err => console.log('error message :' + JSON.stringify(err))
+  iterateInMessage(item, idx) {
+    console.log(item.Participants[item.Participants.length - 1].Name, idx);
+  }
 
   ngOnInit(): void {
     this.refreshMeetings();

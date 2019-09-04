@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Meeting } from 'bingo-meeting-objects';
 import { CardsService } from '../cards.service';
 import { MatOption } from '@angular/material/core';
-import { from, Observable } from 'rxjs';
+// import { from, Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
 @Component({

@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
             // console.log(this.message);  <------------------------- to iterate
             this.nameParticipant = (data.Participants.slice(-1)[0]).Name;
             console.log(this.nameParticipant);
-            let config = new MatSnackBarConfig();
+            const config = new MatSnackBarConfig();
             config.panelClass = 'center'
             this.openSnackBar(`User ${this.nameParticipant} successfully added`, undefined, config);
 

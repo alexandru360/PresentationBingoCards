@@ -12,7 +12,7 @@
     <br />
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Meeting Name" formControlName="meetingName" [value]="mName" required>
+        <input matInput placeholder="Meeting Name" formControlName="meetingName" [value]="meetingName" required>
     </mat-form-field>
     <br />
     <button mat-raised-button type="submit" [disabled]="!createMeetingForm.valid">Create
@@ -20,26 +20,25 @@
 </form>
 <!-- mat input form END -->
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
+
 <div class="meetings" *ngIf="_show" (click)="meetingShow = true ; _show = false">
     <mat-list role=" list " *ngFor="let m of meetings ">
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem " [title]="m.meetingName + ' details' " rel="noopener " [routerLink]="[ '/meetings', m.idMeeting] " (click)="getMeetingValue(m.meetingName) ; show(m)
-    ">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" (click)="addParticipant(m.idMeeting) " mat-raised-button>Join meeting</button>
-        <mat-divider></mat-divider>
+        <mat-list-item role="listitem " [title]="m.meetingName + 'details'" rel="noopener" [routerLink]="[ '/meetings', m.idMeeting]" (click)="getMeetingValue(m.meetingName) ; show(m)">{{m.meetingName}} created by {{m.participantName}}</mat-list-item><button id="join" (click)="addParticipant(m.idMeeting) ; openSnackBar(snackMessage) " mat-raised-button>Join meeting</button>
     </mat-list>
+
 </div>
-<div class="meetings " *ngIf="meetingShow" (click)="_show = true ; meetingShow = false">
+
+<div class="meetings" *ngIf="meetingShow" (click)="_show = true ; meetingShow = false">
     <mat-list>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem " [title]="meetingShow.meetingName + ' details' " rel="noopener " [routerLink]="[ '/meetings', meetingShow.idMeeting] " (click)="getMeetingValue(meetingShow.meetingName)
-    ">{{meetingShow.meetingName}} created by {{meetingShow.participantName}}</mat-list-item><button id="join" (click)="addParticipant(meetingShow.idMeeting) " mat-raised-button [disabled]="!_nameParticipant ">Join meeting</button>
-        <mat-divider></mat-divider>
+        <mat-list-item role="listitem " [title]="meetingShow.meetingName + 'details'" rel="noopener" [routerLink]="[ '/meetings', meetingShow.idMeeting]" (click)="getMeetingValue(meetingShow.meetingName)">{{meetingShow.meetingName}} created by {{meetingShow.participantName}}</mat-list-item><button id="join" (click)="addParticipant(meetingShow.idMeeting) ; openSnackBar(snackMessage)" mat-raised-button [disabled]="!_nameParticipant ">Join meeting</button>
     </mat-list>
+
 </div>
-<div>
-    <div *ngIf="message.length> 0">User : {{message[message.length - 1].Name}} has been added successfully</div>
-    <div *ngFor="let err of errMessage">Error: {{err.status | json}} -> {{err.statusText | json}}</div>
+<!-- <div *ngIf="(message.length > 0)">
+    <mat-card *ngIf="_show">User : <b>{{message[message.length - 1].Name}}</b> has been added successfully @ meeting : <b>{{mName}}</b></mat-card>
+    <mat-card *ngIf="meetingShow">User : <b>{{message[message.length - 1].Name}}</b> has been added successfully @ meeting : <b>{{mName}}</b></mat-card>
 </div>
+<mat-card *ngFor="let err of errMessage">Error: {{err.status | json}} -> {{err.statusText | json}}</mat-card> -->
 <router-outlet></router-outlet>
 <p>
     Made by Andrei Ignat & Alexandru Badita

@@ -5,6 +5,11 @@
     justify-content: space-between;
 } */
 
+
+/* mat-divider {
+    padding-bottom: 3px;
+} */
+
 .mat-list-base {
     display: flex;
     width: 70%;
@@ -23,4 +28,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+mat-card {
+    margin-top: 8px;
+    background-color: rgb(243, 243, 183);
+    width: 40%;
 }

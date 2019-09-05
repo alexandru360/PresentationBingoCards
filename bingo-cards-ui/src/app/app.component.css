@@ -1,16 +1,37 @@
-.mat-list-item {
-    display: flexbox;
+/* .mat-list-item {
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-}
+} */
+
+
+/* mat-divider {
+    padding-bottom: 3px;
+} */
 
 .mat-list-base {
     display: flex;
     width: 70%;
 }
 
+.meetings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 25px !important;
+}
 
-/* #join {
-    padding: 0 auto;
-} */
+#join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    margin-top: 8px;
+    background-color: rgb(243, 243, 183);
+    width: 40%;
+}

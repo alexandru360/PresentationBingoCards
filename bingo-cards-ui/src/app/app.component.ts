@@ -1,9 +1,13 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { CardsService } from './cards.service';
-// import { Meeting } from 'bingo-meeting-objects';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-root',
@@ -18,19 +22,89 @@ export class AppComponent implements OnInit {
   meetings: ActualMeeting[] = [];
   createMeetingForm: FormGroup;
   ngForm: FormGroupDirective;
-  mName: string = '';
+  meetingName: string = '';
+  meetingId: any;
+  nameParticipant: string;
+  _show: boolean = true;
+  meetingShow: boolean;
+  message: any[] = [];
+  errMessage: any[] = [];
+  participants: any[] = [];
+  msgUsr: string;
+  snackMessage: string;
+  openSnackBar = function (snackMessage: string, action: string) {
+    this._snackBar.open(snackMessage, action, {
+      duration: 2500,
+      // data: this.snackMessage
+    });
+  }
 
-  constructor(private formBuilder: FormBuilder, private cardsService: CardsService) {
+
+  constructor(private formBuilder: FormBuilder, private cardsService: CardsService, private _snackBar: MatSnackBar) {
     this.meetings = [];
 
     // why this gives an compilation error if we put new CreateMeeting ? references?
     const c: ICreateMeeting = { userName: '', meetingName: '' };
     this.createMeetingForm = this.formBuilder.group(c, Validators.required);
   }
-  getMeetingValue(id) {
-    console.log(this.meetings);
-    this.mName = id;
+  // _nameParticipant = this.createMeetingForm.get('userName').value;
+  get _nameParticipant(): any {
+    return this.createMeetingForm.get('userName').value;
   }
+  getMeetingValue(id) {
+    // console.log(this.meetings);
+    this.meetingName = id;
+  }
+
+  show(m) {
+    // console.log(m);
+    this.meetingShow = m;
+    this._show = false;
+  }
+  addParticipant(idMeeting: string) {
+    // console.log(idMeeting);
+    // console.log(JSON.stringify(this.message) + "<-")
+    if (this._nameParticipant === '') { this.errMessage.push({ statusText: "Username can't be null" }) } else {
+      const participant = {
+        meetingId: idMeeting,
+        nameParticipant: this._nameParticipant
+      };
+      // console.log(this.nameParticipant)
+      this.cardsService.addParticipant(participant).subscribe(
+        data => {
+          if (data) {
+            this.message = data.Participants;
+            this.meetingName = data.Name;
+            // console.log(this.message);  <------------------------- to iterate
+            this.nameParticipant = (data.Participants.slice(-1)[0]).Name;
+            console.log(this.nameParticipant);
+            this.openSnackBar(`User ${this.nameParticipant} successfully added`);
+
+          } else { this.message = [] }
+
+        },
+        err => { if (err) { this.errMessage.push(err) } else { this.errMessage = [] } }
+        // console.log('successfully added the new participant: ' + JSON.stringify(data)),
+        // err => console.log('error message :' + JSON.stringify(err))
+
+      );
+    }
+    return;
+  }
+  // openSnackBar(snackMessage: string, action: string) {
+  //   this._snackBar.open(snackMessage, action, {
+  //     duration: 2500,
+  //     data: this.snackMessage
+  //   });
+  // }
+
+  iterateInMessage(item, idx) {
+    console.log(item.Participants[item.Participants.length - 1].Name, idx);
+  }
+
+
+
+
 
   ngOnInit(): void {
     this.refreshMeetings();

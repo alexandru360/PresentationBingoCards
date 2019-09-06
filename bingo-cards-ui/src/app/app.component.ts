@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
   errMessage: any[] = [];
   participants: any[] = [];
   msgUsr: string;
-  snackMessage: string;
-  // config = new MatSnackBarConfig();
-  // this.config.panelClass = 'text-align:center';
-
 
 
 
@@ -50,7 +46,7 @@ export class AppComponent implements OnInit {
   openSnackBar(snackMessage: string, action: string, config?) {
     this._snackBar.open(snackMessage, action, {
       duration: 2500,
-      panelClass: 'center'      
+      panelClass: 'center'
     });
   }
   dismissSnack() {
@@ -72,7 +68,8 @@ export class AppComponent implements OnInit {
   addParticipant(idMeeting: string) {
     // console.log(idMeeting);
     // console.log(JSON.stringify(this.message) + "<-")
-    if (this._nameParticipant === '') { this.errMessage.push({ statusText: "Username can't be null" }) } else {
+    if (this._nameParticipant === '' || null)
+     { this.dismissSnack(); this.errMessage.push({ statusText: "Username can't be null" }); } else {
       const participant = {
         meetingId: idMeeting,
         nameParticipant: this._nameParticipant
@@ -83,17 +80,17 @@ export class AppComponent implements OnInit {
           if (data) {
             this.message = data.Participants;
             this.meetingName = data.Name;
-            // console.log(this.message);  <------------------------- to iterate
             this.nameParticipant = (data.Participants.slice(-1)[0]).Name;
-            console.log(this.nameParticipant);
+            // console.log(this.nameParticipant);
             const config = new MatSnackBarConfig();
-            config.panelClass = 'center'
+            // set the CSS class to 'center' into global styles.css
+            config.panelClass = 'center';
             this.openSnackBar(`User ${this.nameParticipant} successfully added`, undefined, config);
 
-          } else { this.message = []  }
+          } else { this.message = []; }
 
         },
-        err => { if (err) { this.errMessage.push(err) && this.dismissSnack() } else { this.errMessage = [] } }
+        err => { if (err) { this.errMessage.push(err); this.dismissSnack(); } else { this.errMessage = []; } }
         // console.log('successfully added the new participant: ' + JSON.stringify(data)),
         // err => console.log('error message :' + JSON.stringify(err))
 
@@ -103,9 +100,9 @@ export class AppComponent implements OnInit {
   }
 
 
-  iterateInMessage(item, idx) {
-    console.log(item.Participants[item.Participants.length - 1].Name, idx);
-  }
+  // iterateInMessage(item, idx) {
+  //   console.log(item.Participants[item.Participants.length - 1].Name, idx);
+  // }
 
 
 

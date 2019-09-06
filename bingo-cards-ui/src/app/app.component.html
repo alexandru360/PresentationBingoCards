@@ -34,10 +34,6 @@
     </mat-list>
 
 </div>
-<!-- <div *ngIf="(message.length > 0)">
-    <mat-card *ngIf="_show">User : <b>{{message[message.length - 1].Name}}</b> has been added successfully @ meeting : <b>{{mName}}</b></mat-card>
-    <mat-card *ngIf="meetingShow">User : <b>{{message[message.length - 1].Name}}</b> has been added successfully @ meeting : <b>{{mName}}</b></mat-card>
-</div>-->
 <mat-card *ngFor="let err of errMessage">Error: {{err.status | json}} -> {{err.statusText | json}}</mat-card>
 <router-outlet></router-outlet>
 <p>

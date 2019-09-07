@@ -5,7 +5,7 @@ import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { CardsService } from './cards.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 
@@ -31,13 +31,7 @@ export class AppComponent implements OnInit {
   errMessage: any[] = [];
   participants: any[] = [];
   msgUsr: string;
-  snackMessage: string;
-  openSnackBar = function (snackMessage: string, action: string) {
-    this._snackBar.open(snackMessage, action, {
-      duration: 2500,
-      // data: this.snackMessage
-    });
-  }
+
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService, private _snackBar: MatSnackBar) {
@@ -48,6 +42,25 @@ export class AppComponent implements OnInit {
     this.createMeetingForm = this.formBuilder.group(c, Validators.required);
   }
   // _nameParticipant = this.createMeetingForm.get('userName').value;
+
+  openSnackBar(snackMessage: string, action: string, config?) {
+    this._snackBar.open(snackMessage, action, {
+      duration: 2500,
+      panelClass: 'center'
+    });
+  }
+  dismissSnack() {
+    this._snackBar.dismiss();
+  }
+  toggle() {
+    this._show = false;
+    this.meetingShow = true;
+    
+  }
+  toggle2() {
+    this.meetingShow = false;
+    this._show = true;
+  }
   get _nameParticipant(): any {
     return this.createMeetingForm.get('userName').value;
   }
@@ -64,7 +77,7 @@ export class AppComponent implements OnInit {
   addParticipant(idMeeting: string) {
     // console.log(idMeeting);
     // console.log(JSON.stringify(this.message) + "<-")
-    if (this._nameParticipant === '') { this.errMessage.push({ statusText: "Username can't be null" }) } else {
+    if (this._nameParticipant === '' || null) { this.dismissSnack(); this.errMessage.push({ statusText: "Username can't be null" }); } else {
       const participant = {
         meetingId: idMeeting,
         nameParticipant: this._nameParticipant
@@ -75,15 +88,17 @@ export class AppComponent implements OnInit {
           if (data) {
             this.message = data.Participants;
             this.meetingName = data.Name;
-            // console.log(this.message);  <------------------------- to iterate
             this.nameParticipant = (data.Participants.slice(-1)[0]).Name;
-            console.log(this.nameParticipant);
-            this.openSnackBar(`User ${this.nameParticipant} successfully added`);
+            // console.log(this.nameParticipant);
+            const config = new MatSnackBarConfig();
+            // set the CSS class to 'center' into global styles.css
+            config.panelClass = 'center';
+            this.openSnackBar(`User ${this.nameParticipant} successfully added`, undefined, config);
 
-          } else { this.message = [] }
+          } else { this.message = []; }
 
         },
-        err => { if (err) { this.errMessage.push(err) } else { this.errMessage = [] } }
+        err => { if (err) { this.errMessage.push(err); this.dismissSnack(); } else { this.errMessage = []; } }
         // console.log('successfully added the new participant: ' + JSON.stringify(data)),
         // err => console.log('error message :' + JSON.stringify(err))
 
@@ -91,16 +106,11 @@ export class AppComponent implements OnInit {
     }
     return;
   }
-  // openSnackBar(snackMessage: string, action: string) {
-  //   this._snackBar.open(snackMessage, action, {
-  //     duration: 2500,
-  //     data: this.snackMessage
-  //   });
-  // }
 
-  iterateInMessage(item, idx) {
-    console.log(item.Participants[item.Participants.length - 1].Name, idx);
-  }
+
+  // iterateInMessage(item, idx) {
+  //   console.log(item.Participants[item.Participants.length - 1].Name, idx);
+  // }
 
 
 

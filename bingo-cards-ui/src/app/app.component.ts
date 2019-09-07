@@ -52,6 +52,15 @@ export class AppComponent implements OnInit {
   dismissSnack() {
     this._snackBar.dismiss();
   }
+  toggle() {
+    this._show = false;
+    this.meetingShow = true;
+    
+  }
+  toggle2() {
+    this.meetingShow = false;
+    this._show = true;
+  }
   get _nameParticipant(): any {
     return this.createMeetingForm.get('userName').value;
   }
@@ -68,8 +77,7 @@ export class AppComponent implements OnInit {
   addParticipant(idMeeting: string) {
     // console.log(idMeeting);
     // console.log(JSON.stringify(this.message) + "<-")
-    if (this._nameParticipant === '' || null)
-     { this.dismissSnack(); this.errMessage.push({ statusText: "Username can't be null" }); } else {
+    if (this._nameParticipant === '' || null) { this.dismissSnack(); this.errMessage.push({ statusText: "Username can't be null" }); } else {
       const participant = {
         meetingId: idMeeting,
         nameParticipant: this._nameParticipant

@@ -13,7 +13,7 @@ import { MatOption } from '@angular/material/core';
   styleUrls: ['./meeting-running.component.css']
 })
 export class MeetingRunningComponent implements OnInit {
-  public actualMeeting;
+  public actualMeeting:Meeting;
   public id: string;
   @Input() selected: boolean;
   @Input() value: any;

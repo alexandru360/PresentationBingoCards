@@ -13,7 +13,7 @@ import { MatOption } from '@angular/material/core';
   styleUrls: ['./meeting-running.component.css']
 })
 export class MeetingRunningComponent implements OnInit {
-  public actualMeeting;
+  public actualMeeting:Meeting;
   public id: string;
   @Input() selected: boolean;
   @Input() value: any;
@@ -71,7 +71,7 @@ export class MeetingRunningComponent implements OnInit {
 
 
 
-  selectionChange(option: MatOption, i) {
+  selectionChange(option: MatOption) {
     if (option.selected === true) {
       // console.log('it was selected: ' + option.value);
       this.Id = option.value;

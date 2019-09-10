@@ -1,6 +1,6 @@
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
@@ -25,13 +25,13 @@ export class AppComponent implements OnInit {
   meetingName: string = '';
   meetingId: any;
   nameParticipant: string;
-  _show: boolean = true;
-  meetingShow: boolean;
+  // _show: boolean = true;
+  // meetingShow: boolean;
   message: any[] = [];
   errMessage: any[] = [];
   participants: any[] = [];
   msgUsr: string;
-
+  @Input() m; 
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService, private _snackBar: MatSnackBar) {
@@ -52,15 +52,13 @@ export class AppComponent implements OnInit {
   dismissSnack() {
     this._snackBar.dismiss();
   }
-  toggle() {
-    this._show = false;
-    this.meetingShow = true;
-    
+  toggle(idMeeting) {
+    this.meetings['idMeeting']= !this.meetings['idMeeting'];
   }
-  toggle2() {
-    this.meetingShow = false;
-    this._show = true;
-  }
+  // toggle2() {
+  //   this.meetingShow = false;
+  //   this._show = true;
+  // }
   get _nameParticipant(): any {
     return this.createMeetingForm.get('userName').value;
   }
@@ -69,11 +67,11 @@ export class AppComponent implements OnInit {
     this.meetingName = id;
   }
 
-  show(m) {
-    // console.log(m);
-    this.meetingShow = m;
-    this._show = false;
-  }
+  // show(m) {
+  //   console.log(m);
+  //   this.meetingShow = m;
+  //   this._show = false;
+  // }
   addParticipant(idMeeting: string) {
     // console.log(idMeeting);
     // console.log(JSON.stringify(this.message) + "<-")

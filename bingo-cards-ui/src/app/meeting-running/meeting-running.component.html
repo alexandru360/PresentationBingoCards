@@ -8,7 +8,7 @@
         <mat-list-option role="listitem" *ngFor="let p of actualMeeting.Participants">{{ p.Name }}</mat-list-option>
     </mat-selection-list>
     <h3>Cards:</h3>
-    <mat-selection-list role="list" #cards (selectionChange)="selectionChange($event.option, i)">
+    <mat-selection-list role="list" #cards (selectionChange)="selectionChange($event.option)">
         <mat-list-option role="listitem" *ngFor="let c of actualMeeting.Cards ; let i = index" [selected]="c.selected" [value]="i">{{c.Name}}</mat-list-option>
     </mat-selection-list>
     <button mat-raised-button (click)="saveCards(Cards)">Save ticked cards</button>

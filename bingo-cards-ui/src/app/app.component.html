@@ -22,20 +22,22 @@
 <h2>Existing bingo meetings {{ meetings.length }}</h2>
 
 <div class="meetings">
-    <mat-list role="list" *ngFor="let m of meetings">
-        <mat-list-item role="listitem " [title]="m.meetingName + 'details'" *ngIf="m.idMeeting" rel="noopener" [routerLink]="[ '/meetings', m.idMeeting]">
-            {{m.meetingName}} created by {{m.participantName}}
+    <mat-list role="list" *ngFor="let m of meetings ; let i = index">
+        <mat-list-item role="listitem " [title]="m.meetingName + 'details'" *ngIf="m.idMeeting && newMeetings[i]" rel="noopener" [routerLink]="[ '/meetings', m.idMeeting]">
+            <div class="meeting">{{m.meetingName}} created by {{m.participantName}}</div>
+            <div class="fix_flex"></div>
+            <mat-checkbox click-stop-propagation [labelPosition]="labelPosition" (change)="selectOneMeeting($event.checked, i) ; getMeetingValue(m.meetingName)">Select me&make the other meetings disappear!</mat-checkbox>
         </mat-list-item>
-        <button id="join" (click)="addParticipant(m.idMeeting)  " mat-raised-button [disabled]="!_nameParticipant">
+        <button id="join" *ngIf="m.idMeeting && newMeetings[i] == true" (click)="addParticipant(m.idMeeting)" mat-raised-button [disabled]="!_nameParticipant">
             Join meeting</button>
     </mat-list>
-    <mat-list role="list" *ngFor="let m of meetings">
+    <!-- <mat-list role="list" *ngFor="let m of meetings">
         <mat-list-item role="listitem " [title]="m.meetingName + 'details'" *ngIf="m.idMeeting" rel="noopener" [routerLink]="[ '/meetings', m.idMeeting]">
             {{m.meetingName}} created by {{m.participantName}}
         </mat-list-item>
         <button id="join" (click)="addParticipant(m.idMeeting)" mat-raised-button [disabled]="!_nameParticipant">
             Join meeting</button>
-    </mat-list>
+    </mat-list> -->
 </div>
 
 <!-- <div class="meetings" *ngIf="meetingShow" (click)="toggle2()">
@@ -50,3 +52,4 @@
 </p>
 
 Github project at : <a target="_blank" href='https://github.com/alexandru360/PresentationBingoCards/'>https://github.com/alexandru360/PresentationBingoCards/</a>
+

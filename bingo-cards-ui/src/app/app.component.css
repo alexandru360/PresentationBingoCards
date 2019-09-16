@@ -1,13 +1,19 @@
-/* .mat-list-item {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-} */
+.fix_flex {
+    width: 80%;
+}
+
+.meeting {
+    display: inline !important;
+    width: 100%;
+}
 
 
-/* mat-divider {
-    padding-bottom: 3px;
+/* mat-list-item {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: space-between !important;
+    color: red !important;
 } */
 
 .mat-list-base {

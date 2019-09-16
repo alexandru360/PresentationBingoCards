@@ -89,8 +89,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#getmeeting" class="tsd-kind-icon">Get<wbr>Meeting</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#getmeetings" class="tsd-kind-icon">Get<wbr>Meetings</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#savecards" class="tsd-kind-icon">Save<wbr>Cards</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#savemeeting" class="tsd-kind-icon">Save<wbr>Meeting</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#addparticipant" class="tsd-kind-icon">add<wbr>Participant</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cardsservice.html#checkcard" class="tsd-kind-icon">check<wbr>Card</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,7 +109,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:16</li>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:17</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -134,7 +135,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:22</li>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -157,36 +158,10 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:27</li>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:28</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ActualMeeting</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="savecards" class="tsd-anchor"></a>
-					<h3>Save<wbr>Cards</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">Save<wbr>Cards<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, create<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:36</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>id: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>create: <span class="tsd-signature-type">object</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -200,11 +175,60 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:32</li>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:33</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
+								<li>
+									<h5>create: <span class="tsd-signature-type">ICreateMeeting</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addparticipant" class="tsd-anchor"></a>
+					<h3>add<wbr>Participant</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Participant<span class="tsd-signature-symbol">(</span>participant<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:41</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>participant: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkcard" class="tsd-anchor"></a>
+					<h3>check<wbr>Card</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Card<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, create<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ICreateMeeting</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Observable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in bingo-cards-ui/src/app/cards.service.ts:37</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>id: <span class="tsd-signature-type">any</span></h5>
+								</li>
 								<li>
 									<h5>create: <span class="tsd-signature-type">ICreateMeeting</span></h5>
 								</li>
@@ -252,15 +276,21 @@
 								<a href="cardsservice.html#getmeetings" class="tsd-kind-icon">Get<wbr>Meetings</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cardsservice.html#savecards" class="tsd-kind-icon">Save<wbr>Cards</a>
+								<a href="cardsservice.html#savemeeting" class="tsd-kind-icon">Save<wbr>Meeting</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cardsservice.html#savemeeting" class="tsd-kind-icon">Save<wbr>Meeting</a>
+								<a href="cardsservice.html#addparticipant" class="tsd-kind-icon">add<wbr>Participant</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="cardsservice.html#checkcard" class="tsd-kind-icon">check<wbr>Card</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="clickstoppropagation.html" class="tsd-kind-icon">Click<wbr>Stop<wbr>Propagation</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="meetingrunningcomponent.html" class="tsd-kind-icon">Meeting<wbr>Running<wbr>Component</a>
 					</li>

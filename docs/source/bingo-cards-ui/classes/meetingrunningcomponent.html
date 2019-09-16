@@ -97,8 +97,10 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#id" class="tsd-kind-icon">Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#actualmeeting" class="tsd-kind-icon">actual<wbr>Meeting</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#arrkeytxtval" class="tsd-kind-icon">arr<wbr>Key<wbr>Txt<wbr>Val</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#cardid" class="tsd-kind-icon">card<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#id-1" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#selected" class="tsd-kind-icon">selected</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#username" class="tsd-kind-icon">user<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="meetingrunningcomponent.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
@@ -125,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:22</li>
+									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:24</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -147,7 +149,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="cards" class="tsd-anchor"></a>
 					<h3>Cards</h3>
-					<div class="tsd-signature tsd-kind-icon">Cards<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="cards.html" class="tsd-signature-type">Cards</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">Cards<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:20</li>
@@ -167,7 +169,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="actualmeeting" class="tsd-anchor"></a>
 					<h3>actual<wbr>Meeting</h3>
-					<div class="tsd-signature tsd-kind-icon">actual<wbr>Meeting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Meeting</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
+					<div class="tsd-signature tsd-kind-icon">actual<wbr>Meeting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Meeting</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:16</li>
@@ -181,6 +183,16 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:22</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="cardid" class="tsd-anchor"></a>
+					<h3>card<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">card<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:24</li>
 						</ul>
 					</aside>
 				</section>
@@ -201,6 +213,16 @@
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:18</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="username" class="tsd-anchor"></a>
+					<h3>user<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:23</li>
 						</ul>
 					</aside>
 				</section>
@@ -227,7 +249,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:32</li>
+									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:33</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -238,19 +260,19 @@
 					<a name="savecards" class="tsd-anchor"></a>
 					<h3>save<wbr>Cards</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">save<wbr>Cards<span class="tsd-signature-symbol">(</span>i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">save<wbr>Cards<span class="tsd-signature-symbol">(</span>cards<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:50</li>
+									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:51</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>i: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>cards: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -267,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:70</li>
+									<li>Defined in bingo-cards-ui/src/app/meeting-running/meeting-running.component.ts:74</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -307,6 +329,9 @@
 					<li class=" tsd-kind-class">
 						<a href="cardsservice.html" class="tsd-kind-icon">Cards<wbr>Service</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="clickstoppropagation.html" class="tsd-kind-icon">Click<wbr>Stop<wbr>Propagation</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -328,10 +353,16 @@
 								<a href="meetingrunningcomponent.html#arrkeytxtval" class="tsd-kind-icon">arr<wbr>Key<wbr>Txt<wbr>Val</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="meetingrunningcomponent.html#cardid" class="tsd-kind-icon">card<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="meetingrunningcomponent.html#id-1" class="tsd-kind-icon">id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="meetingrunningcomponent.html#selected" class="tsd-kind-icon">selected</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="meetingrunningcomponent.html#username" class="tsd-kind-icon">user<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="meetingrunningcomponent.html#value" class="tsd-kind-icon">value</a>

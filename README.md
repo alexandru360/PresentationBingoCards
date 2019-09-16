@@ -7,9 +7,9 @@ Azure Devops CI and artifacts:
 https://alexandru360.visualstudio.com/BingoCards/_build?definitionId=2
 
 
-# PresentationBingoCards
+# PresentationBingoCards 
 Bingo cards for meetings :)
-See demo at : https://alexandru360.github.io/PresentationBingoCards/
+## See demo at : https://alexandru360.github.io/PresentationBingoCards/
 
 ## What it does: 
 Every time in a meeting that a participant hears a phrase (like “ Hi, can you hear me?” or “ can everyone see my screen?” or others …)  he can check one of the cards. In the final you can see for the meeting how many cards you have checked.
@@ -20,3 +20,6 @@ http://bingo-meeting-api.herokuapp.com/api
 
 ## Blog link:
 http://msprogrammer.serviciipeweb.ro/category/bingo/
+
+## Project documentation link ( for programmers) 
+See project documentation at https://github.com/alexandru360/PresentationBingoCards/wiki

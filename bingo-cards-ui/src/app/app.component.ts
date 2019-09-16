@@ -1,11 +1,13 @@
 
 
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ICreateMeeting } from 'bingo-meeting-objects';
 import { ActualMeeting } from 'bingo-cards-api-objects';
 import { FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { CardsService } from './cards.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+
 
 
 
@@ -15,23 +17,26 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
 
   title = 'Bingo Meetings';
   meetings: ActualMeeting[] = [];
   createMeetingForm: FormGroup;
   ngForm: FormGroupDirective;
-  meetingName: string = '';
+  meetingName = '';
   meetingId: any;
   nameParticipant: string;
-  // _show: boolean = true;
-  // meetingShow: boolean;
+  show = true;
   message: any[] = [];
   errMessage: any[] = [];
   participants: any[] = [];
   msgUsr: string;
-  @Input() m; 
+  // @Input() checked: boolean;
+  labelPosition = 'before';
+  // @ViewChild('matCheckbox', { static: false }) chkbox;
+  checked: boolean = false;
+  newMeetings: boolean[] = [];
 
 
   constructor(private formBuilder: FormBuilder, private cardsService: CardsService, private _snackBar: MatSnackBar) {
@@ -41,7 +46,6 @@ export class AppComponent implements OnInit {
     const c: ICreateMeeting = { userName: '', meetingName: '' };
     this.createMeetingForm = this.formBuilder.group(c, Validators.required);
   }
-  // _nameParticipant = this.createMeetingForm.get('userName').value;
 
   openSnackBar(snackMessage: string, action: string, config?) {
     this._snackBar.open(snackMessage, action, {
@@ -49,33 +53,38 @@ export class AppComponent implements OnInit {
       panelClass: 'center'
     });
   }
+
   dismissSnack() {
     this._snackBar.dismiss();
   }
-  toggle(idMeeting) {
-    this.meetings['idMeeting']= !this.meetings['idMeeting'];
-  }
-  // toggle2() {
-  //   this.meetingShow = false;
-  //   this._show = true;
-  // }
+
   get _nameParticipant(): any {
     return this.createMeetingForm.get('userName').value;
   }
-  getMeetingValue(id) {
-    // console.log(this.meetings);
-    this.meetingName = id;
+
+  getMeetingValue(meetingName) {
+    return this.meetingName = meetingName;
   }
 
-  // show(m) {
-  //   console.log(m);
-  //   this.meetingShow = m;
-  //   this._show = false;
-  // }
+  selectOneMeeting(event, i) {
+    if (event) {
+      this.newMeetings.forEach((el, index) => {
+        console.log(el);
+        if (index !== i) { this.newMeetings[index] = false; }
+      });
+    } else {
+      this.newMeetings.forEach((el, index) => {
+        this.newMeetings[index] = true;
+      });
+    }
+
+  }
+
   addParticipant(idMeeting: string) {
-    // console.log(idMeeting);
-    // console.log(JSON.stringify(this.message) + "<-")
-    if (this._nameParticipant === '' || null) { this.dismissSnack(); this.errMessage.push({ statusText: "Username can't be null" }); } else {
+    if (this._nameParticipant === '' || null) {
+      this.dismissSnack();
+      this.errMessage.push({ statusText: 'Username can\'t be null' });
+    } else {
       const participant = {
         meetingId: idMeeting,
         nameParticipant: this._nameParticipant
@@ -92,7 +101,7 @@ export class AppComponent implements OnInit {
             // set the CSS class to 'center' into global styles.css
             config.panelClass = 'center';
             this.openSnackBar(`User ${this.nameParticipant} successfully added`, undefined, config);
-
+            if (this.checked) { console.log('checked'); }
           } else { this.message = []; }
 
         },
@@ -106,20 +115,25 @@ export class AppComponent implements OnInit {
   }
 
 
-  // iterateInMessage(item, idx) {
-  //   console.log(item.Participants[item.Participants.length - 1].Name, idx);
-  // }
 
+  ngAfterViewInit() {
 
-
-
+  }
 
   ngOnInit(): void {
     this.refreshMeetings();
+
   }
   refreshMeetings(): void {
-    this.cardsService.GetMeetings().subscribe(it => this.meetings = it);
+    this.cardsService.GetMeetings().subscribe(it => {
+      this.meetings = it;
+      for (const meeting of this.meetings) {
+        this.newMeetings.push(true);
+        console.log(meeting);
+      }
+    });
   }
+
   onSubmit(data: ICreateMeeting, formDirective: FormGroupDirective) {
 
     this.createMeetingForm.disable();

@@ -1,7 +1,8 @@
 [![Build Status](https://alexandru360.visualstudio.com/BingoCards/_apis/build/status/alexandru360.PresentationBingoCards?branchName=master)](https://alexandru360.visualstudio.com/BingoCards/_build/latest?definitionId=2&branchName=master)
 ![Azure DevOps tests](https://img.shields.io/azure-devops/tests/alexandru360/BingoCards/2)
 ![Azure DevOps releases](https://alexandru360.vsrm.visualstudio.com/_apis/public/Release/badge/ba6c7db7-574d-4c8f-adc3-d7aff9b43cf0/1/1)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Falexandru360%2FPresentationBingoCards.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Falexandru360%2FPresentationBingoCards?ref=badge_shield)
+
 
 Azure Devops CI and artifacts:
 https://alexandru360.visualstudio.com/BingoCards/_build?definitionId=2
@@ -23,3 +24,7 @@ http://msprogrammer.serviciipeweb.ro/category/bingo/
 
 ## Project documentation link ( for programmers) 
 See project documentation at https://github.com/alexandru360/PresentationBingoCards/wiki
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Falexandru360%2FPresentationBingoCards.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Falexandru360%2FPresentationBingoCards?ref=badge_large)
